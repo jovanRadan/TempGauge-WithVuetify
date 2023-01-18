@@ -58,12 +58,14 @@ export default {
 
 .container {
   height: 110vh;
+  justify-items: center;
+  justify-content: center;
   /*background-color: black;*/
 }
 
 .responsiveMobile {
   margin-top: 1.5em;
-  margin-bottom: 3.5em;
+  margin-bottom: 5.5em;
   margin-left: 1.10em;
   height: 250px;
   width: 250px;
@@ -72,25 +74,17 @@ export default {
   color: white;
   font-family: "trebuchet MS", sans-serif;
   font-size: 100px;
+  padding-top: 0.2em;
   display: flex;
+  -webkit-box-align: center;
   align-items: center;
+  -webkit-box-pack: center;
   justify-content: center;
-
-
-  /*text-transform: initial;*/
-  /*-webkit-box-align: center;*/
-  /*-ms-flex-align: center;*/
-  /*align-items: center;*/
-  /*display: -webkit-box;*/
-  /*display: -ms-flexbox;*/
-  /*display: flex;*/
-  /*-ms-flex-wrap: wrap;*/
-  /*flex-wrap: wrap;*/
 }
 
 .headingMobile {
   margin-top: 2em;
-  margin-left: -2.25em;
+
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -108,30 +102,34 @@ export default {
 
 
 .responsiveTablet {
-  margin: 1em auto 0;
+  margin-top: 0.75em;
+  margin-bottom: 3em;
   height: 450px;
   width: 450px;
   background-color: #00adee;
   border-radius: 50%;
-  font-size: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  text-transform: initial;
+  font-size: 200px;
+  padding-top: 0.2em;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
 }
 
 
 .headingTablet {
+  margin-top: 2em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
-  margin-bottom: 4.5em;
+  margin-bottom: -4.5em;
   letter-spacing: 6px;
   color: white;
   text-align: center;
-  font-size: 45px;
+  font-size: 70px;
 }
 
 .headingTablet:hover {
@@ -141,32 +139,34 @@ export default {
 
 
 .responsiveMedium {
-
-  margin: 0.25em auto auto;
-  height: 300px;
-  width: 300px;
+  margin-top: 0.5em;
+  margin-bottom: 4em;
+  height: 400px;
+  width: 400px;
   background-color: #00adee;
   border-radius: 50%;
-  font-size: 175px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  text-transform: initial;
+  font-size: 165px;
+  padding-top: 0.2em;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
 }
 
 
 .headingMedium {
+  margin-top: 1.75em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
-  margin-bottom: 4.5em;
+  /*margin-bottom: -4.5em;*/
   letter-spacing: 6px;
   color: white;
   text-align: center;
-  font-size: 45px;
+  font-size: 60px;
 }
 
 .headingMedium:hover {
@@ -176,17 +176,22 @@ export default {
 
 
 .responsiveDesktop {
-  /*margin-top: 1.5em;*/
+  margin-top: 0.25em;
   margin-bottom: 3.5em;
   height: 350px;
   width: 350px;
   background-color: #00adee;
   border-radius: 50%;
-  padding-top: 30px;
-  font-size: 150px;
-  display: flex;
+  padding-top: 10px;
+  font-size: 175px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
-  justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   color: white;
   font-family: "trebuchet MS", sans-serif;
@@ -194,14 +199,15 @@ export default {
 }
 
 .headingDesktop {
+  margin-top: 1.25em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
-  margin-bottom: 4.5em;
+  /*margin-bottom: -4.5em;*/
   letter-spacing: 6px;
   color: white;
   text-align: center;
-  font-size: 70px;
+  font-size: 40px;
 }
 
 .headingDesktop:hover {
