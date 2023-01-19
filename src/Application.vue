@@ -4,44 +4,44 @@
 
     <the-header></the-header>
 
-
     <aside>
       <button type="button" @click="minToMax">0 - 50 Toggle</button>
 
       <button type="button" @click="random">Random Number</button>
     </aside>
+    <div :class="ColourfulGaugeSize">
 
-<!--      <div class="Gauge">-->
-<!--        <gauge-->
-<!--            fontSize="1em"-->
-<!--            :min="0"-->
-<!--            :max="50"-->
-<!--            :dp="1"-->
-<!--            :value="exampleValue"-->
-<!--            unit="°C"-->
-<!--            style="width: 500px"-->
-<!--            inactiveFill="#212121"-->
-<!--            :minThreshold="23"-->
-<!--            :maxThreshold="25"-->
-<!--            minThresholdFill="lawngreen"-->
-<!--            maxThresholdFill="darkred"-->
-<!--            title-style="fill: #999999; font-size: 12px; font-weight: 600;  transform: translateY(-5px)"-->
-<!--        />-->
+      <!--      <div class="Gauge">-->
+      <!--        <gauge-->
+      <!--            fontSize="1em"-->
+      <!--            :min="0"-->
+      <!--            :max="50"-->
+      <!--            :dp="1"-->
+      <!--            :value="exampleValue"-->
+      <!--            unit="°C"-->
+      <!--            style="width: 500px"-->
+      <!--            inactiveFill="#212121"-->
+      <!--            :minThreshold="23"-->
+      <!--            :maxThreshold="25"-->
+      <!--            minThresholdFill="lawngreen"-->
+      <!--            maxThresholdFill="darkred"-->
+      <!--            title-style="fill: #999999; font-size: 12px; font-weight: 600;  transform: translateY(-5px)"-->
+      <!--        />-->
 
-        <div class="app1">
-          <colourful-gauge
-              :value="exampleValue"
-              :width="350"
-              :height="150"
-              :min="0"
-              :max="50"
-              label-text="°C"
-              title="Temp Gauge"
-          />
-<!--        </div>-->
+        <colourful-gauge
+            :value="exampleValue"
+            :min="0"
+            :max="50"
+            label-text="°C"
+            :width="380"
+            :height="350"
+
+        />
+
+
+        <!--        </div>-->
       </div>
-
-  </div>
+    </div>
 </template>
 
 <script>
@@ -87,21 +87,21 @@ export default {
   computed: {
     valInt() {
       return parseInt(this.theVal);
-    }
-  },
-  ColourfulGaugeSize() {
-    switch (this.$vuetify.breakpoint.name) {
+    },
+    ColourfulGaugeSize() {
+      switch (this.$vuetify.breakpoint.name) {
 
-      case 'xs':
-        return 'colourful-GaugeMobile'
-      case 'sm':
-        return 'colourful-GaugeTablet'
-      case 'md':
-        return 'colourful-GaugeMedium'
-      case 'lg':
-        return 'colourful-GaugeDesktop'
-      case 'xl':
-        return 'colourful-GaugeUltraWide'
+        case 'xs':
+          return 'colourful-GaugeMobile'
+        case 'sm':
+          return 'colourful-GaugeTablet'
+        case 'md':
+          return 'colourful-GaugeMedium'
+        case 'lg':
+          return 'colourful-GaugeDesktop'
+        case 'xl':
+          return 'colourful-GaugeUltraWide'
+      }
     }
   }
 };
@@ -174,9 +174,12 @@ button {
   place-items: center center;
 }
 
-.GaugeMobile {
-  width: 350px;
+.colourful-GaugeMobile {
+  value: "exampleValue";
+  width: 325px;
   height: 350px;
+  label-text: "°C";
+  title: "Google Gauge";
 }
 
 </style>
