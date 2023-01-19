@@ -1,7 +1,6 @@
 <template>
   <root :isSection="!!heading" ref="root" class="root" :class="{ padding }">
     <heading :level="headingLevel" v-if="heading" v-text="heading" :style="{ marginTop: 0 }"/>
-    <div id="sizeOfGauge">
       <svg :viewBox="`0 0 ${diameter} ${height}`" :style="style" xmlns="http://www.w3.org/2000/svg" >
         <defs>
           <clipPath :id="`clip-bottom-${_uid}`">
@@ -106,7 +105,6 @@
             :offsetY="10 + pivotRadius / 2"
         />
       </svg>
-    </div>
   </root>
 </template>
 

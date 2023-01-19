@@ -13,10 +13,8 @@
 </template>
 
 <script>
-// import Heading from "@/components/Heading";
 
 export default {
-  // components: {Heading},
   computed: {
     whichScreen() {
       switch (this.$vuetify.breakpoint.name) {
@@ -57,7 +55,7 @@ export default {
 /*==========================================================================================*/
 
 .container {
-  height: 110vh;
+  /*height: 110vh;     FIX THIS (IM PRETTY SURE CONTAINER NEEDS TO BE OUTSIDE THE VUETIFY TAG <v-card class=" "> */
   justify-items: center;
   justify-content: center;
   /*background-color: black;*/
@@ -66,7 +64,7 @@ export default {
 .responsiveMobile {
   margin-top: 1.5em;
   margin-bottom: 5.5em;
-  margin-left: 1.10em;
+  margin-left: 1.05em;
   height: 250px;
   width: 250px;
   background-color: #00adee;
@@ -80,6 +78,8 @@ export default {
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
+  justify-items: center;
+  text-align: center;
 }
 
 .headingMobile {
@@ -92,6 +92,7 @@ export default {
   letter-spacing: 6px;
   color: white;
   text-align: center;
+  justify-content: center;
   font-size: 30px;
 }
 
@@ -129,6 +130,7 @@ export default {
   letter-spacing: 6px;
   color: white;
   text-align: center;
+  justify-content: center;
   font-size: 70px;
 }
 
@@ -162,11 +164,11 @@ export default {
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
-  /*margin-bottom: -4.5em;*/
   letter-spacing: 6px;
   color: white;
   text-align: center;
-  font-size: 60px;
+  justify-content: center;
+  font-size: 70px;
 }
 
 .headingMedium:hover {
@@ -176,14 +178,14 @@ export default {
 
 
 .responsiveDesktop {
-  margin-top: 0.25em;
+  margin-top: 0.5em;
   margin-bottom: 3.5em;
   height: 350px;
   width: 350px;
   background-color: #00adee;
   border-radius: 50%;
   padding-top: 10px;
-  font-size: 175px;
+  font-size: 150px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -199,15 +201,17 @@ export default {
 }
 
 .headingDesktop {
-  margin-top: 1.25em;
+  margin-top: 1.75em;
+  padding-left: 35px;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
-  /*margin-bottom: -4.5em;*/
   letter-spacing: 6px;
   color: white;
   text-align: center;
-  font-size: 40px;
+  justify-content: center;
+  /*text-justify-trim: center;*/
+  font-size: 50px;
 }
 
 .headingDesktop:hover {

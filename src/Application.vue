@@ -1,8 +1,9 @@
 <template>
   <div>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <the-header></the-header>
+
 
     <aside>
       <button type="button" @click="minToMax">0 - 50 Toggle</button>
@@ -10,34 +11,36 @@
       <button type="button" @click="random">Random Number</button>
     </aside>
 
-    <div id="app">
-      <gauge
-          fontSize="1em"
-          :min="0"
-          :max="50"
-          :dp="1"
-          :value="exampleValue"
-          unit="°C"
-          style="width: 250px"
-          inactiveFill="#212121"
-          :minThreshold="23"
-          :maxThreshold="25"
-          minThresholdFill="lawngreen"
-          maxThresholdFill="darkred"
-          title-style="fill: #999999; font-size: 12px; font-weight: 600;  transform: translateY(-5px)"
-      />
-      <div id="app1">
-        <colourful-gauge
-            :value="exampleValue"
-            :width="350"
-            :height="150"
-            :min="0"
-            :max="50"
-            label-text="°C"
-            title="Temp Gauge"
-        />
+<!--      <div class="Gauge">-->
+<!--        <gauge-->
+<!--            fontSize="1em"-->
+<!--            :min="0"-->
+<!--            :max="50"-->
+<!--            :dp="1"-->
+<!--            :value="exampleValue"-->
+<!--            unit="°C"-->
+<!--            style="width: 500px"-->
+<!--            inactiveFill="#212121"-->
+<!--            :minThreshold="23"-->
+<!--            :maxThreshold="25"-->
+<!--            minThresholdFill="lawngreen"-->
+<!--            maxThresholdFill="darkred"-->
+<!--            title-style="fill: #999999; font-size: 12px; font-weight: 600;  transform: translateY(-5px)"-->
+<!--        />-->
+
+        <div class="app1">
+          <colourful-gauge
+              :value="exampleValue"
+              :width="350"
+              :height="150"
+              :min="0"
+              :max="50"
+              label-text="°C"
+              title="Temp Gauge"
+          />
+<!--        </div>-->
       </div>
-    </div>
+
   </div>
 </template>
 
@@ -49,9 +52,9 @@ import TheHeader from "@/components/layout/TheHeader";
 export default {
   name: "Apps",
   components: {
-    ColourfulGauge,
     TheHeader,
     Gauge,
+    ColourfulGauge,
   },
   data() {
     return {
@@ -84,25 +87,39 @@ export default {
   computed: {
     valInt() {
       return parseInt(this.theVal);
-    },
+    }
+  },
+  ColourfulGaugeSize() {
+    switch (this.$vuetify.breakpoint.name) {
+
+      case 'xs':
+        return 'colourful-GaugeMobile'
+      case 'sm':
+        return 'colourful-GaugeTablet'
+      case 'md':
+        return 'colourful-GaugeMedium'
+      case 'lg':
+        return 'colourful-GaugeDesktop'
+      case 'xl':
+        return 'colourful-GaugeUltraWide'
+    }
   }
 };
 </script>
 
 <style>
 
-/*#app input {*/
-/*  display: block;*/
-/*  margin: 50px auto 0 auto;*/
-/*  width: 100%;*/
-/*}*/
 
 * {
   font-family: sans-serif;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
   background: #000405;
+
   /*min-height: 100vh;*/
   display: flex;
   align-items: center;
@@ -112,12 +129,6 @@ body {
   font-weight: 900;
 }
 
-/*h1 {*/
-/*  margin: auto;*/
-/*  padding: 1em;*/
-/*  text-align: center;*/
-/*}*/
-
 aside {
   display: flex;
   flex-flow: row wrap;
@@ -125,9 +136,8 @@ aside {
   text-align: center;
   grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
   grid-gap: 1em;
-  /*padding: 2em;*/
+  margin-left: 30px;
   place-items: center center;
-
 }
 
 h3 {
@@ -164,5 +174,9 @@ button {
   place-items: center center;
 }
 
+.GaugeMobile {
+  width: 350px;
+  height: 350px;
+}
 
 </style>
