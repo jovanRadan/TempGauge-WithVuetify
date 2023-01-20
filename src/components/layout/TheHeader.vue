@@ -4,13 +4,13 @@
     <div class="container">
       <v-card :class="whichScreen">
         <div class="outerCircle">
-          <div class="innerCircle">
-        <v-card-title class="dot">GDi</v-card-title>
-        </div>
-          <div class="circle"></div>
+            <v-card-title class="dot">GDi</v-card-title>
+          <div class="circle" style="animation-delay: 0.5s"></div>
+          <div class="circle" style="animation-delay: 1.5s"></div>
+          <div class="circle" style="animation-delay: 2.5s"></div>
+          <div class="circle" style="animation-delay: 3.5s"></div>
         </div>
         <v-card-title :class="sizeOfTitle">Server Room Temperature Log</v-card-title>
-        <!--        <v-card-title class="p">&#45;&#45;Scroll Down&#45;&#45;</v-card-title>-->
       </v-card>
     </div>
 
@@ -50,7 +50,7 @@ export default {
         case 'xl':
           return 'headingUltraWide'
       }
-    }
+    },
   }
 }
 </script>
@@ -71,6 +71,29 @@ export default {
   height: 110vh;
 }
 
+.circle {
+  top:0.1%;
+  border-radius: 50%;
+  background-color: deepskyblue;
+  width: 250px; /* here to change size of pulsing  */
+  height:250px; /* here to change size of pulsing  */
+  position: absolute;
+  opacity: 0;
+  animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+  z-index: -100;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(.5, .5);
+    opacity: .5;
+  }
+  to {
+    transform: scale(2.5, 2.5);
+    opacity: 0;
+  }
+}
+
 .responsiveMobile {
   top: 20%;
   height: 250px;
@@ -81,6 +104,8 @@ export default {
   font-family: "trebuchet MS", sans-serif;
   font-size: 100px;
   padding-top: 40px;
+  visibility: unset;
+
 }
 
 .headingMobile {
