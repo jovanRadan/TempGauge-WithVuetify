@@ -9,7 +9,6 @@
 
       <button type="button" @click="random">Random Number</button>
     </aside>
-    <div :class="ColourfulGaugeSize">
 
       <!--      <div class="Gauge">-->
       <!--        <gauge-->
@@ -35,12 +34,9 @@
             label-text="°C"
             :width="380"
             :height="350"
-
         />
 
-
         <!--        </div>-->
-      </div>
     </div>
 </template>
 
@@ -88,21 +84,6 @@ export default {
     valInt() {
       return parseInt(this.theVal);
     },
-    ColourfulGaugeSize() {
-      switch (this.$vuetify.breakpoint.name) {
-
-        case 'xs':
-          return 'colourful-GaugeMobile'
-        case 'sm':
-          return 'colourful-GaugeTablet'
-        case 'md':
-          return 'colourful-GaugeMedium'
-        case 'lg':
-          return 'colourful-GaugeDesktop'
-        case 'xl':
-          return 'colourful-GaugeUltraWide'
-      }
-    }
   }
 };
 </script>
@@ -172,14 +153,6 @@ button {
   grid-gap: 5em;
   padding: -0.5em;
   place-items: center center;
-}
-
-.colourful-GaugeMobile {
-  value: "exampleValue";
-  width: 325px;
-  height: 350px;
-  label-text: "°C";
-  title: "Google Gauge";
 }
 
 </style>

@@ -1,13 +1,13 @@
 <template>
   <header>
 
-    <v-card :class="whichScreen">
-      <div class="container">
+    <div class="container">
+      <v-card :class="whichScreen">
         <v-card-title class="dot">GDi</v-card-title>
         <v-card-title :class="sizeOfTitle">Server Room Temperature Log</v-card-title>
         <!--        <v-card-title class="p">&#45;&#45;Scroll Down&#45;&#45;</v-card-title>-->
-      </div>
-    </v-card>
+      </v-card>
+    </div>
 
   </header>
 </template>
@@ -54,17 +54,18 @@ export default {
 
 /*==========================================================================================*/
 
-.container {
-  /*height: 110vh;     FIX THIS (IM PRETTY SURE CONTAINER NEEDS TO BE OUTSIDE THE VUETIFY TAG <v-card class=" "> */
+* {
+  margin: auto;
   justify-items: center;
   justify-content: center;
-  /*background-color: black;*/
+}
+
+.container {
+  height: 110vh;
 }
 
 .responsiveMobile {
-  margin-top: 1.5em;
-  margin-bottom: 5.5em;
-  margin-left: 1.05em;
+  top: 20%;
   height: 250px;
   width: 250px;
   background-color: #00adee;
@@ -72,19 +73,11 @@ export default {
   color: white;
   font-family: "trebuchet MS", sans-serif;
   font-size: 100px;
-  padding-top: 0.2em;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  justify-items: center;
-  text-align: center;
+  padding-top: 40px;
 }
 
 .headingMobile {
   margin-top: 2em;
-
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -94,6 +87,7 @@ export default {
   text-align: center;
   justify-content: center;
   font-size: 30px;
+  text-decoration-line: underline
 }
 
 .headingMobile:hover {
@@ -103,8 +97,7 @@ export default {
 
 
 .responsiveTablet {
-  margin-top: 0.75em;
-  margin-bottom: 3em;
+  top: 15%;
   height: 450px;
   width: 450px;
   background-color: #00adee;
@@ -112,12 +105,7 @@ export default {
   color: white;
   font-family: "trebuchet MS", sans-serif;
   font-size: 200px;
-  padding-top: 0.2em;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
+  padding-top: 65px;
 }
 
 
@@ -132,6 +120,7 @@ export default {
   text-align: center;
   justify-content: center;
   font-size: 70px;
+  text-decoration-line: underline
 }
 
 .headingTablet:hover {
@@ -141,21 +130,15 @@ export default {
 
 
 .responsiveMedium {
-  margin-top: 0.5em;
-  margin-bottom: 4em;
-  height: 400px;
-  width: 400px;
+  top: 10%;
+  height: 500px;
+  width: 500px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 165px;
-  padding-top: 0.2em;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
+  font-size: 225px;
+  padding-top: 70px;
 }
 
 
@@ -164,11 +147,13 @@ export default {
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
+  margin-bottom: -4.5em;
   letter-spacing: 6px;
   color: white;
   text-align: center;
   justify-content: center;
   font-size: 70px;
+  text-decoration-line: underline
 }
 
 .headingMedium:hover {
@@ -178,40 +163,29 @@ export default {
 
 
 .responsiveDesktop {
-  margin-top: 0.5em;
-  margin-bottom: 3.5em;
-  height: 350px;
-  width: 350px;
+  top: 5%;
+  height: 400px;
+  width: 400px;
   background-color: #00adee;
   border-radius: 50%;
-  padding-top: 10px;
-  font-size: 150px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  text-transform: initial;
+  font-size: 185px;
+  padding-top: 55px;
 }
 
 .headingDesktop {
   margin-top: 1.75em;
-  padding-left: 35px;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
+  margin-bottom: -4.5em;
   letter-spacing: 6px;
   color: white;
   text-align: center;
   justify-content: center;
-  /*text-justify-trim: center;*/
-  font-size: 50px;
+  font-size: 40px;
+  text-decoration-line: underline
 }
 
 .headingDesktop:hover {

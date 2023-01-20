@@ -3,7 +3,7 @@
     <svg
         :height="height"
         version="1.1"
-        :width="width"
+        :width="getWidth"
         :viewBox="`0 0 250 ${doughnut ? 280 : 150}`"
         xmlns="http://www.w3.org/2000/svg"
     >
@@ -145,10 +145,10 @@ export default {
       type: String,
       default: "fill: #999999; font-size: 20px; font-weight: bold"
     },
-    width: {
+    /*width: {
       type: [Number, String],
       default: 200
-    },
+    },*/
     height: {
       type: [Number, String],
       default: 150
@@ -412,6 +412,21 @@ export default {
       }
 
       return args;
+    },
+    getWidth() {
+      switch (this.$vuetify.breakpoint.name) {
+
+        case 'xs':
+          return 380
+        case 'sm':
+          return 600
+        case 'md':
+          return 800
+        case 'lg':
+          return 1000
+        case 'xl':
+          return 1200
+      }
     }
   },
   watch: {
