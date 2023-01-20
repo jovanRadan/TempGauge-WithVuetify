@@ -3,7 +3,12 @@
 
     <div class="container">
       <v-card :class="whichScreen">
+        <div class="outerCircle">
+          <div class="innerCircle">
         <v-card-title class="dot">GDi</v-card-title>
+        </div>
+          <div class="circle"></div>
+        </div>
         <v-card-title :class="sizeOfTitle">Server Room Temperature Log</v-card-title>
         <!--        <v-card-title class="p">&#45;&#45;Scroll Down&#45;&#45;</v-card-title>-->
       </v-card>
@@ -55,9 +60,11 @@ export default {
 /*==========================================================================================*/
 
 * {
+  /*display: grid;*/
   margin: auto;
   justify-items: center;
   justify-content: center;
+  place-content: center;
 }
 
 .container {
@@ -119,7 +126,7 @@ export default {
   color: white;
   text-align: center;
   justify-content: center;
-  font-size: 70px;
+  font-size: 60px;
   text-decoration-line: underline
 }
 
@@ -164,18 +171,18 @@ export default {
 
 .responsiveDesktop {
   top: 5%;
-  height: 400px;
-  width: 400px;
+  height: 600px;
+  width: 600px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 185px;
-  padding-top: 55px;
+  font-size: 275px;
+  padding-top: 70px;
 }
 
 .headingDesktop {
-  margin-top: 1.75em;
+  margin-top: 2em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -184,7 +191,7 @@ export default {
   color: white;
   text-align: center;
   justify-content: center;
-  font-size: 40px;
+  font-size: 80px;
   text-decoration-line: underline
 }
 
@@ -192,6 +199,39 @@ export default {
   letter-spacing: 10px;
   transition: 800ms ease;
 }
+
+
+.responsiveUltraWide {
+  top: 5%;
+  height: 650px;
+  width: 650px;
+  background-color: #00adee;
+  border-radius: 50%;
+  color: white;
+  font-family: "trebuchet MS", sans-serif;
+  font-size: 300px;
+  padding-top: 90px;
+}
+
+.headingUltraWide {
+  margin-top: 1.25em;
+  text-transform: uppercase;
+  font-family: 'Gambetta', serif;
+  transition: 1000ms ease-out;
+  margin-bottom: -4.5em;
+  letter-spacing: 6px;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  font-size: 90px;
+  text-decoration-line: underline
+}
+
+.headingUltraWide:hover {
+  letter-spacing: 10px;
+  transition: 800ms ease;
+}
+
 
 /*==========================================================================================*/
 
