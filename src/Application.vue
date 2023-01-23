@@ -5,9 +5,9 @@
     <the-header></the-header>
 
     <aside>
-      <button type="button" @click="minToMax">0 - 50 Toggle</button>
+      <button type="button" :class="buttonSizes" @click="minToMax">0 - 50 Toggle</button>
 
-      <button type="button" @click="random">Random Number</button>
+      <button type="button" :class="buttonSizes" @click="random">Random Number</button>
     </aside>
 
       <!--      <div class="Gauge">-->
@@ -84,6 +84,21 @@ export default {
     valInt() {
       return parseInt(this.theVal);
     },
+    buttonSizes() {
+      switch (this.$vuetify.breakpoint.name) {
+
+        case 'xs':
+          return 'buttonMobile'
+        case 'sm':
+          return 'buttonTablet'
+        case 'md':
+          return 'buttonMedium'
+        case 'lg':
+          return 'buttonDesktop'
+        case 'xl':
+          return 'buttonUltraWide'
+      }
+    },
   }
 };
 </script>
@@ -111,13 +126,13 @@ body {
 }
 
 aside {
+  margin: auto;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   text-align: center;
   grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
   grid-gap: 1em;
-  margin-left: 30px;
   place-items: center center;
 }
 
@@ -133,7 +148,20 @@ h3 {
   font-family: sans-serif;
 }
 
-button {
+/*button {*/
+/*  border: none;*/
+/*  border-radius: 5px;*/
+/*  background-color: #187bcd;*/
+/*  color: #fff;*/
+/*  display: block;*/
+/*  font-weight: bold;*/
+/*  font-size: 1.5em;*/
+/*  height: 2em;*/
+/*  margin: auto 1em;*/
+/*  text-align: center;*/
+/*}*/
+
+.buttonMobile {
   border: none;
   border-radius: 5px;
   background-color: #187bcd;
@@ -141,6 +169,58 @@ button {
   display: block;
   font-weight: bold;
   font-size: 1.5em;
+  height: 2em;
+  margin: auto 1em;
+  text-align: center;
+}
+
+.buttonTablet {
+  border: none;
+  border-radius: 5px;
+  background-color: #187bcd;
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  font-size: 2em;
+  height: 2em;
+  margin: auto 1em;
+  text-align: center;
+}
+
+.buttonMedium {
+  border: none;
+  border-radius: 5px;
+  background-color: #187bcd;
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  font-size: 2em;
+  height: 2em;
+  margin: auto 1em;
+  text-align: center;
+}
+
+.buttonDesktop {
+  border: none;
+  border-radius: 5px;
+  background-color: #187bcd;
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  font-size: 2em;
+  height: 2em;
+  margin: auto 1em;
+  text-align: center;
+}
+
+.buttonUltraWide {
+  border: none;
+  border-radius: 5px;
+  background-color: #187bcd;
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  font-size: 3em;
   height: 2em;
   margin: auto 1em;
   text-align: center;

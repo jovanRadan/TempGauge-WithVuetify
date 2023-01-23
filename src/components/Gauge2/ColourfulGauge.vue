@@ -1,7 +1,7 @@
 <template>
   <div class="ColourfulGaugeSize">
     <svg
-        :height="height"
+        :height="getheight"
         version="1.1"
         :width="getWidth"
         :viewBox="`0 0 250 ${doughnut ? 280 : 150}`"
@@ -419,43 +419,58 @@ export default {
         case 'xs':
           return 380
         case 'sm':
-          return 600
+          return 680
         case 'md':
-          return 800
+          return 700
         case 'lg':
-          return 1000
+          return 700
         case 'xl':
-          return 1200
+          return 1000
+      }
+    },
+    getHeight() {
+      switch (this.$vuetify.breakpoint.name) {
+
+        case 'xs':
+          return 380
+        case 'sm':
+          return 680
+        case 'md':
+          return 700
+        case 'lg':
+          return 1500
+        case 'xl':
+          return 2000
+      }
+    },
+  },
+    watch: {
+      value: {
+        handler(newVal) {
+          if (this.animationCanceler) {
+            this.animationCanceler();
+          }
+
+          this.animationCanceler = animateCalc(
+              this.shownValue,
+              this.checkLimits(newVal),
+              this.animationDuration,
+              val => {
+                this.shownValue = this.checkLimits(val);
+                this.printValue = this.formatFunction(this.shownValue);
+              },
+              this.easingFunction
+          );
+        },
+        immediate: true
+      },
+      shownValue: {
+        handler(val) {
+          let color = this.getColorForValue(val).join(",");
+          this.gaugeColor = `rgb(${color})`;
+        },
+        immediate: true
       }
     }
-  },
-  watch: {
-    value: {
-      handler(newVal) {
-        if (this.animationCanceler) {
-          this.animationCanceler();
-        }
-
-        this.animationCanceler = animateCalc(
-            this.shownValue,
-            this.checkLimits(newVal),
-            this.animationDuration,
-            val => {
-              this.shownValue = this.checkLimits(val);
-              this.printValue = this.formatFunction(this.shownValue);
-            },
-            this.easingFunction
-        );
-      },
-      immediate: true
-    },
-    shownValue: {
-      handler(val) {
-        let color = this.getColorForValue(val).join(",");
-        this.gaugeColor = `rgb(${color})`;
-      },
-      immediate: true
-    }
-  }
 };
 </script>

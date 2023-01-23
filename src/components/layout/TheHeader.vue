@@ -5,10 +5,10 @@
       <v-card :class="whichScreen">
         <div class="outerCircle">
             <v-card-title class="dot">GDi</v-card-title>
-          <div class="circle" style="animation-delay: 0.5s"></div>
-          <div class="circle" style="animation-delay: 1.5s"></div>
-          <div class="circle" style="animation-delay: 2.5s"></div>
-          <div class="circle" style="animation-delay: 3.5s"></div>
+          <div :class="pulsingCircle" style="animation-delay: 0.5s"></div>
+          <div :class="pulsingCircle" style="animation-delay: 1.5s"></div>
+          <div :class="pulsingCircle" style="animation-delay: 2.5s"></div>
+          <div :class="pulsingCircle" style="animation-delay: 3.5s"></div>
         </div>
         <v-card-title :class="sizeOfTitle">Server Room Temperature Log</v-card-title>
       </v-card>
@@ -51,6 +51,21 @@ export default {
           return 'headingUltraWide'
       }
     },
+    pulsingCircle() {
+      switch (this.$vuetify.breakpoint.name) {
+
+        case 'xs':
+          return 'pulsingMobile'
+        case 'sm':
+          return 'pulsingTablet'
+        case 'md':
+          return 'pulsingMedium'
+        case 'lg':
+          return 'pulsingDesktop'
+        case 'xl':
+          return 'pulsingUltraWide'
+      }
+    },
   }
 }
 </script>
@@ -71,18 +86,6 @@ export default {
   height: 110vh;
 }
 
-.circle {
-  top:0.1%;
-  border-radius: 50%;
-  background-color: deepskyblue;
-  width: 250px; /* here to change size of pulsing  */
-  height:250px; /* here to change size of pulsing  */
-  position: absolute;
-  opacity: 0;
-  animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: -100;
-}
-
 @keyframes scaleIn {
   from {
     transform: scale(.5, .5);
@@ -94,8 +97,10 @@ export default {
   }
 }
 
+/*=========================================================================================================================*/
+
 .responsiveMobile {
-  top: 20%;
+  top: 17.5%;
   height: 250px;
   width: 250px;
   background-color: #00adee;
@@ -127,6 +132,19 @@ export default {
   transition: 800ms ease;
 }
 
+.pulsingMobile {
+  top:0.1%;
+  border-radius: 50%;
+  background-color: deepskyblue;
+  width: 250px; /* here to change size of pulsing  */
+  height:250px; /* here to change size of pulsing  */
+  position: absolute;
+  opacity: 0;
+  animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+  z-index: -100;
+}
+
+/*=========================================================================================================================*/
 
 .responsiveTablet {
   top: 15%;
@@ -160,22 +178,35 @@ export default {
   transition: 800ms ease;
 }
 
+.pulsingTablet {
+  top:0.1%;
+  border-radius: 50%;
+  background-color: deepskyblue;
+  width: 450px; /* here to change size of pulsing  */
+  height:450px; /* here to change size of pulsing  */
+  position: absolute;
+  opacity: 0;
+  animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+  z-index: -100;
+}
+
+/*=========================================================================================================================*/
 
 .responsiveMedium {
-  top: 10%;
-  height: 500px;
-  width: 500px;
+  top: 5%;
+  height: 475px;
+  width: 475px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
   font-size: 225px;
-  padding-top: 70px;
+  padding-top: 55px;
 }
 
 
 .headingMedium {
-  margin-top: 1.75em;
+  margin-top: 1.5em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -184,7 +215,7 @@ export default {
   color: white;
   text-align: center;
   justify-content: center;
-  font-size: 70px;
+  font-size: 60px;
   text-decoration-line: underline
 }
 
@@ -193,30 +224,42 @@ export default {
   transition: 800ms ease;
 }
 
+.pulsingMedium {
+  top:0.1%;
+  border-radius: 50%;
+  background-color: deepskyblue;
+  width: 475px; /* here to change size of pulsing  */
+  height:475px; /* here to change size of pulsing  */
+  position: absolute;
+  opacity: 0;
+  animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+  z-index: -100;
+}
+
+/*=========================================================================================================================*/
 
 .responsiveDesktop {
   top: 5%;
-  height: 600px;
-  width: 600px;
+  height: 500px;
+  width: 500px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 275px;
-  padding-top: 70px;
+  font-size: 250px;
+  padding-top: 50px;
 }
 
 .headingDesktop {
-  margin-top: 2em;
+  margin-top: 1.5em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
-  margin-bottom: -4.5em;
   letter-spacing: 6px;
   color: white;
   text-align: center;
   justify-content: center;
-  font-size: 80px;
+  font-size: 50px;
   text-decoration-line: underline
 }
 
@@ -225,6 +268,19 @@ export default {
   transition: 800ms ease;
 }
 
+.pulsingDesktop {
+  top:0.1%;
+  border-radius: 50%;
+  background-color: deepskyblue;
+  width: 500px; /* here to change size of pulsing  */
+  height:500px; /* here to change size of pulsing  */
+  position: absolute;
+  opacity: 0;
+  animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+  z-index: -100;
+}
+
+/*=========================================================================================================================*/
 
 .responsiveUltraWide {
   top: 5%;
@@ -239,7 +295,7 @@ export default {
 }
 
 .headingUltraWide {
-  margin-top: 1.25em;
+  margin-top: 1.75em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -248,7 +304,7 @@ export default {
   color: white;
   text-align: center;
   justify-content: center;
-  font-size: 90px;
+  font-size: 80px;
   text-decoration-line: underline
 }
 
@@ -257,23 +313,16 @@ export default {
   transition: 800ms ease;
 }
 
-
-/*==========================================================================================*/
-
-/*.p {*/
-/*  font-size: 0.8em;*/
-/*  margin-bottom: -10.5em;*/
-/*  line-height: 150%;*/
-/*  text-align: center;*/
-/*  color: white;*/
-/*  !*MintCream;*!*/
-/*  letter-spacing: 4px;*/
-/*  transition: 1000ms ease-out;*/
-/*}*/
-
-/*.p:hover {*/
-/*  letter-spacing: 6px;*/
-/*  transition: 800ms ease;*/
-/*} */
+.pulsingUltraWide {
+  top:0.1%;
+  border-radius: 50%;
+  background-color: deepskyblue;
+  width: 650px; /* here to change size of pulsing  */
+  height:650px; /* here to change size of pulsing  */
+  position: absolute;
+  opacity: 0;
+  animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+  z-index: -100;
+}
 
 </style>
