@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Application" :class="mode">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <the-header></the-header>
@@ -46,7 +46,7 @@ import ColourfulGauge from "@/components/Gauge2/ColourfulGauge";
 import TheHeader from "@/components/layout/TheHeader";
 
 export default {
-  name: "Apps",
+  name: "Application",
   components: {
     TheHeader,
     Gauge,
@@ -55,11 +55,14 @@ export default {
   data() {
     return {
       exampleValue: 0,
-      gauge1: 60,
+      mode: 'light'
     };
   },
   mounted() {
     this.random();
+  },
+  created() {
+      window.addEventListener('keyup', this.keyPress)
   },
   methods: {
     random() {
@@ -78,8 +81,20 @@ export default {
       } else {
         return 2 - (7.5625 * (pos -= 2.625 / 2.75) * pos + 0.984375);
       }
-    }
-  },
+    },
+    keyPress (e) {
+      if (e.key === 't') {
+        this.toggle()
+      }
+    },
+      toggle () {
+        if (this.mode === "dark") {
+          this.mode = "light"
+        } else {
+          this.mode = "dark"
+        }
+      }
+    },
   computed: {
     valInt() {
       return parseInt(this.theVal);
@@ -105,7 +120,6 @@ export default {
 
 <style>
 
-
 * {
   font-family: sans-serif;
   justify-items: center;
@@ -114,15 +128,13 @@ export default {
 }
 
 body {
-  background: #000405;
-
-  /*min-height: 100vh;*/
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
   font-family: 'Work Sans', sans-serif;
   font-weight: 900;
+  transition: background 0.3s ease-in-out;
+
 }
 
 aside {
@@ -148,24 +160,11 @@ h3 {
   font-family: sans-serif;
 }
 
-/*button {*/
-/*  border: none;*/
-/*  border-radius: 5px;*/
-/*  background-color: #187bcd;*/
-/*  color: #fff;*/
-/*  display: block;*/
-/*  font-weight: bold;*/
-/*  font-size: 1.5em;*/
-/*  height: 2em;*/
-/*  margin: auto 1em;*/
-/*  text-align: center;*/
-/*}*/
-
 .buttonMobile {
   border: none;
   border-radius: 5px;
   background-color: #187bcd;
-  color: #fff;
+  color: #FFFFFF;
   display: block;
   font-weight: bold;
   font-size: 1.5em;
@@ -217,7 +216,7 @@ h3 {
   border: none;
   border-radius: 5px;
   background-color: #187bcd;
-  color: #fff;
+  color: #FFFFFF;
   display: block;
   font-weight: bold;
   font-size: 3em;
@@ -226,13 +225,16 @@ h3 {
   text-align: center;
 }
 
-#app {
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
-  grid-gap: 5em;
-  padding: -0.5em;
-  place-items: center center;
+.Application {
+  background-color: #F3F3F3;
+  color: #192734;
+  transition: background 1.75s ease-in-out;
+  width: 100vw;
+}
+
+.dark {
+  background: #192734;
+  color: #E8E8E8;
 }
 
 </style>

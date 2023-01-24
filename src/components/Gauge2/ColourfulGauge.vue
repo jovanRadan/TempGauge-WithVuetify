@@ -182,7 +182,7 @@ export default {
     valueFontStyle: {
       type: String,
       default:
-          'font-size: 35px; fill: #ffffff; font-weight: bold; font-family: "Arial"'
+          'font-size: 35px; fill: #b3b3b3; font-weight: bold; font-family: "Arial"'
     },
     labelFontStyle: {
       type: String,

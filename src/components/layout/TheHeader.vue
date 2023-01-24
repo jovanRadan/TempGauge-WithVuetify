@@ -1,10 +1,15 @@
 <template>
   <header>
 
+    <navbar>
+      <h1>{{ mode }}  Mode</h1>
+      <Toggle :mode="mode" @toggle="$emit('toggle')"/>
+    </navbar>
+
     <div class="container">
       <v-card :class="whichScreen">
         <div class="outerCircle">
-            <v-card-title class="dot">GDi</v-card-title>
+          <v-card-title class="dot">GDi</v-card-title>
           <div :class="pulsingCircle" style="animation-delay: 0.5s"></div>
           <div :class="pulsingCircle" style="animation-delay: 1.5s"></div>
           <div :class="pulsingCircle" style="animation-delay: 2.5s"></div>
@@ -13,13 +18,17 @@
         <v-card-title :class="sizeOfTitle">Server Room Temperature Log</v-card-title>
       </v-card>
     </div>
-
   </header>
 </template>
 
 <script>
+import Toggle from '@/components/switch/Toggle'
 
 export default {
+  props: ['mode'],
+  components: {
+    Toggle
+  },
   computed: {
     whichScreen() {
       switch (this.$vuetify.breakpoint.name) {
@@ -72,8 +81,6 @@ export default {
 
 <style scoped>
 
-/*==========================================================================================*/
-
 * {
   /*display: grid;*/
   margin: auto;
@@ -81,6 +88,32 @@ export default {
   justify-content: center;
   place-content: center;
 }
+
+/*==========================================================================================*/
+
+navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background: deeppink;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+}
+
+.dark.navbar {
+  background: #15202B;
+  width: 100%;
+}
+
+navbar h1 {
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: 900;
+  /*width: 100%;*/
+}
+
+/*==========================================================================================*/
 
 .container {
   height: 110vh;
@@ -100,7 +133,7 @@ export default {
 /*=========================================================================================================================*/
 
 .responsiveMobile {
-  top: 17.5%;
+  top: 10%;
   height: 250px;
   width: 250px;
   background-color: #00adee;
@@ -110,7 +143,6 @@ export default {
   font-size: 100px;
   padding-top: 40px;
   visibility: unset;
-
 }
 
 .headingMobile {
@@ -120,7 +152,7 @@ export default {
   transition: 1000ms ease-out;
   margin-bottom: -4.5em;
   letter-spacing: 6px;
-  color: white;
+  color: black;
   text-align: center;
   justify-content: center;
   font-size: 30px;
@@ -132,16 +164,21 @@ export default {
   transition: 800ms ease;
 }
 
+.dark.headingMobile {
+  color: white;
+
+}
+
 .pulsingMobile {
-  top:0.1%;
+  top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
   width: 250px; /* here to change size of pulsing  */
-  height:250px; /* here to change size of pulsing  */
+  height: 250px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: -100;
+  z-index: 100;
 }
 
 /*=========================================================================================================================*/
@@ -166,7 +203,7 @@ export default {
   transition: 1000ms ease-out;
   margin-bottom: -4.5em;
   letter-spacing: 6px;
-  color: white;
+  color: black;
   text-align: center;
   justify-content: center;
   font-size: 60px;
@@ -179,11 +216,11 @@ export default {
 }
 
 .pulsingTablet {
-  top:0.1%;
+  top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
   width: 450px; /* here to change size of pulsing  */
-  height:450px; /* here to change size of pulsing  */
+  height: 450px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
@@ -212,7 +249,7 @@ export default {
   transition: 1000ms ease-out;
   margin-bottom: -4.5em;
   letter-spacing: 6px;
-  color: white;
+  color: black;
   text-align: center;
   justify-content: center;
   font-size: 60px;
@@ -225,11 +262,11 @@ export default {
 }
 
 .pulsingMedium {
-  top:0.1%;
+  top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
   width: 475px; /* here to change size of pulsing  */
-  height:475px; /* here to change size of pulsing  */
+  height: 475px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
@@ -256,7 +293,7 @@ export default {
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
   letter-spacing: 6px;
-  color: white;
+  color: black;
   text-align: center;
   justify-content: center;
   font-size: 50px;
@@ -269,11 +306,11 @@ export default {
 }
 
 .pulsingDesktop {
-  top:0.1%;
+  top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
   width: 500px; /* here to change size of pulsing  */
-  height:500px; /* here to change size of pulsing  */
+  height: 500px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
@@ -301,10 +338,10 @@ export default {
   transition: 1000ms ease-out;
   margin-bottom: -4.5em;
   letter-spacing: 6px;
-  color: white;
+  color: black;
   text-align: center;
   justify-content: center;
-  font-size: 80px;
+  font-size: 90px;
   text-decoration-line: underline
 }
 
@@ -314,15 +351,47 @@ export default {
 }
 
 .pulsingUltraWide {
-  top:0.1%;
+  top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
   width: 650px; /* here to change size of pulsing  */
-  height:650px; /* here to change size of pulsing  */
+  height: 650px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: -100;
+  z-index: -1000;
 }
+
+/*=========================================================================================================================*/
+/*.dark.headingMobile {*/
+/*  margin-top: 2em;*/
+/*  text-transform: uppercase;*/
+/*  font-family: 'Gambetta', serif;*/
+/*  transition: 1000ms ease-out;*/
+/*  margin-bottom: -4.5em;*/
+/*  letter-spacing: 6px;*/
+/*  color: black;*/
+/*  text-align: center;*/
+/*  justify-content: center;*/
+/*  font-size: 30px;*/
+/*  text-decoration-line: underline*/
+/*}*/
+
+/*.dark.headingTablet {*/
+/*  color: white;*/
+/*}*/
+
+/*.dark.headingMedium {*/
+/*  color: white;*/
+/*}*/
+
+/*.dark.headingDesktop {*/
+/*  color: white;*/
+/*}*/
+
+/*.dark.headingUltraWide {*/
+/*  color: white;*/
+/*}*/
+
 
 </style>
