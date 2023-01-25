@@ -2,7 +2,9 @@
   <div class="Application" :class="mode">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <the-header></the-header>
+    <the-header :mode="mode" @toggle="toggle"></the-header>
+<!--    <the-header :mode="mode"></the-header>-->
+
 
     <aside>
       <button type="button" :class="buttonSizes" @click="minToMax">0 - 50 Toggle</button>

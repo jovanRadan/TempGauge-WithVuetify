@@ -2,20 +2,24 @@
   <header>
 
     <navbar>
-      <h1>{{ mode }}  Mode</h1>
+      <h1>{{ mode }} Mode</h1>
+      <h1> Press t to switch</h1>
       <Toggle :mode="mode" @toggle="$emit('toggle')"/>
+
     </navbar>
 
     <div class="container">
       <v-card :class="whichScreen">
         <div class="outerCircle">
           <v-card-title class="dot">GDi</v-card-title>
-          <div :class="pulsingCircle" style="animation-delay: 0.5s"></div>
-          <div :class="pulsingCircle" style="animation-delay: 1.5s"></div>
-          <div :class="pulsingCircle" style="animation-delay: 2.5s"></div>
-          <div :class="pulsingCircle" style="animation-delay: 3.5s"></div>
+          <div id="pulsingCircleContainer">
+            <div :class="pulsingCircle" style="animation-delay: 0.5s"></div>
+            <div :class="pulsingCircle" style="animation-delay: 1.5s"></div>
+            <div :class="pulsingCircle" style="animation-delay: 2.5s"></div>
+            <div :class="pulsingCircle" style="animation-delay: 3.5s"></div>
+          </div>
+          <v-card-title :class="sizeOfTitle">Server Room Temperature Log</v-card-title>
         </div>
-        <v-card-title :class="sizeOfTitle">Server Room Temperature Log</v-card-title>
       </v-card>
     </div>
   </header>
@@ -75,6 +79,21 @@ export default {
           return 'pulsingUltraWide'
       }
     },
+    navbar() {
+      switch (this.$vuetify.breakpoint.name) {
+
+        case 'xs':
+          return 'navbarMobile'
+        case 'sm':
+          return 'navbarTablet'
+        case 'md':
+          return 'navbarMedium'
+        case 'lg':
+          return 'navbarDesktop'
+        case 'xl':
+          return 'navbarUltraWide'
+      }
+    }
   }
 }
 </script>
@@ -96,14 +115,14 @@ navbar {
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  background: deeppink;
-  transition: background 0.3s ease-in-out;
+  background: #c2c2c2;
+  transition: background 1.75s ease-in-out;
   width: 100%;
+  padding-left: 250px;
 }
 
-.dark.navbar {
-  background: #15202B;
-  width: 100%;
+.dark navbar {
+  background: #364049;
 }
 
 navbar h1 {
@@ -112,6 +131,7 @@ navbar h1 {
   font-weight: 900;
   /*width: 100%;*/
 }
+
 
 /*==========================================================================================*/
 
@@ -131,6 +151,16 @@ navbar h1 {
 }
 
 /*=========================================================================================================================*/
+
+.pulsingCircleContainer {
+  /*width: 200px;*/
+  /*height: 200px;*/
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  /*overflow: hidden;*/
+  /*position: relative;*/
+}
 
 .responsiveMobile {
   top: 10%;
@@ -152,12 +182,16 @@ navbar h1 {
   transition: 1000ms ease-out;
   margin-bottom: -4.5em;
   letter-spacing: 6px;
-  color: black;
+  color: #427f93;
   text-align: center;
   justify-content: center;
   font-size: 30px;
   text-decoration-line: underline
 }
+
+/*.dark headingMobile {*/
+/*  color: white;*/
+/*}*/
 
 .headingMobile:hover {
   letter-spacing: 10px;
@@ -166,7 +200,6 @@ navbar h1 {
 
 .dark.headingMobile {
   color: white;
-
 }
 
 .pulsingMobile {
@@ -178,7 +211,7 @@ navbar h1 {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: 100;
+  z-index: 1;
 }
 
 /*=========================================================================================================================*/
@@ -203,12 +236,16 @@ navbar h1 {
   transition: 1000ms ease-out;
   margin-bottom: -4.5em;
   letter-spacing: 6px;
-  color: black;
+  color: #427f93;
   text-align: center;
   justify-content: center;
   font-size: 60px;
   text-decoration-line: underline
 }
+
+/*.dark headingTablet {*/
+/*  color: white;*/
+/*}*/
 
 .headingTablet:hover {
   letter-spacing: 10px;
@@ -224,7 +261,7 @@ navbar h1 {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: -100;
+  z-index: 1;
 }
 
 /*=========================================================================================================================*/
@@ -249,12 +286,16 @@ navbar h1 {
   transition: 1000ms ease-out;
   margin-bottom: -4.5em;
   letter-spacing: 6px;
-  color: black;
+  color: #427f93;
   text-align: center;
   justify-content: center;
   font-size: 60px;
   text-decoration-line: underline
 }
+
+/*.dark headingMedium {*/
+/*  color: white;*/
+/*}*/
 
 .headingMedium:hover {
   letter-spacing: 10px;
@@ -270,7 +311,7 @@ navbar h1 {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: -100;
+  z-index: 1;
 }
 
 /*=========================================================================================================================*/
@@ -293,12 +334,16 @@ navbar h1 {
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
   letter-spacing: 6px;
-  color: black;
+  color: #427f93;
   text-align: center;
   justify-content: center;
   font-size: 50px;
   text-decoration-line: underline
 }
+
+/*.dark headingDesktop {*/
+/*  color: white;*/
+/*}*/
 
 .headingDesktop:hover {
   letter-spacing: 10px;
@@ -314,7 +359,7 @@ navbar h1 {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: -100;
+  z-index: 1;
 }
 
 /*=========================================================================================================================*/
@@ -338,11 +383,15 @@ navbar h1 {
   transition: 1000ms ease-out;
   margin-bottom: -4.5em;
   letter-spacing: 6px;
-  color: black;
+  color: #427f93;
   text-align: center;
   justify-content: center;
   font-size: 90px;
   text-decoration-line: underline
+}
+
+.dark headingUltraWide {
+  color: white;
 }
 
 .headingUltraWide:hover {
@@ -359,7 +408,7 @@ navbar h1 {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: -1000;
+  z-index: 1;
 }
 
 /*=========================================================================================================================*/

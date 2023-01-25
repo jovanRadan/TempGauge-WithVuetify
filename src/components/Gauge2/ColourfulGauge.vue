@@ -474,3 +474,14 @@ export default {
     }
 };
 </script>
+
+<!--<style scoped>-->
+
+<!--* {-->
+<!--  margin: auto;-->
+<!--  justify-items: center;-->
+<!--  justify-content: center;-->
+<!--  align-items: center;-->
+<!--}-->
+
+<!--</style>-->

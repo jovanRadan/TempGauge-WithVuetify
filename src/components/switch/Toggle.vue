@@ -1,19 +1,21 @@
 <template>
-  <div class="toggle-wrapper">
-    <label class="toggle">
-      <input
-        type="checkbox"
-        :checked="(mode === 'dark') ? 'checked' : false"
-        @change="$emit('toggle')"
-      />
-      <span class="toggler round"></span>
-    </label>
+  <div class="navbar">
+    <div class="toggle-wrapper">
+      <label class="toggle">
+        <input
+            type="checkbox"
+            :checked="(mode === 'dark') ? 'checked' : false"
+            @change="$emit('toggle')"
+        />
+        <span class="toggler round"></span>
+      </label>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['mode']
+  props: ['mode'],
 }
 </script>
 
@@ -24,6 +26,7 @@ export default {
   width: 60px;
   height: 34px;
 }
+
 .toggle input {
   opacity: 0;
   width: 0;
@@ -57,6 +60,7 @@ export default {
 input:checked + .toggler {
   background: #2196F3;
 }
+
 input:focus + toggler {
   box-shadow: 0 0 2px #2196F3;
 }
@@ -70,6 +74,7 @@ input:checked + .toggler:before {
 .toggler.round {
   border-radius: 34px;
 }
+
 .toggler.round:before {
   border-radius: 50%;
 }
