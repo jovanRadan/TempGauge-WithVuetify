@@ -2,10 +2,9 @@
   <header>
 
     <navbar>
-      <h1>{{ mode }} Mode</h1>
-      <h1> Press t to switch</h1>
+      <h1 class="totalNavbar">{{ mode }} Mode</h1>
+      <h1 class="totalNavbar"> (Press t to switch)</h1>
       <Toggle :mode="mode" @toggle="$emit('toggle')"/>
-
     </navbar>
 
     <div class="container">
@@ -79,7 +78,7 @@ export default {
           return 'pulsingUltraWide'
       }
     },
-    navbar() {
+    navbarWriting() {
       switch (this.$vuetify.breakpoint.name) {
 
         case 'xs':
@@ -101,7 +100,6 @@ export default {
 <style scoped>
 
 * {
-  /*display: grid;*/
   margin: auto;
   justify-items: center;
   justify-content: center;
@@ -115,10 +113,12 @@ navbar {
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  background: #c2c2c2;
+  background: #d4d4d4;
   transition: background 1.75s ease-in-out;
   width: 100%;
-  padding-left: 250px;
+  padding-right: 100px;
+  z-index: 1000000;
+  position: absolute;
 }
 
 .dark navbar {
@@ -129,11 +129,13 @@ navbar h1 {
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 900;
-  /*width: 100%;*/
 }
 
+/*.navbarMobile h1 {*/
+/*  font-size: 10px;*/
+/*}*/
 
-/*==========================================================================================*/
+/*==========================================================================================n*/
 
 .container {
   height: 110vh;
@@ -226,6 +228,8 @@ navbar h1 {
   font-family: "trebuchet MS", sans-serif;
   font-size: 200px;
   padding-top: 65px;
+  z-index: 1;
+
 }
 
 
@@ -261,7 +265,7 @@ navbar h1 {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: 1;
+  z-index: -10;
 }
 
 /*=========================================================================================================================*/
@@ -276,6 +280,7 @@ navbar h1 {
   font-family: "trebuchet MS", sans-serif;
   font-size: 225px;
   padding-top: 55px;
+  z-index: 1;
 }
 
 
@@ -311,13 +316,13 @@ navbar h1 {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: 1;
+  z-index: -10;
 }
 
 /*=========================================================================================================================*/
 
 .responsiveDesktop {
-  top: 5%;
+  top: 10%;
   height: 500px;
   width: 500px;
   background-color: #00adee;
@@ -326,6 +331,7 @@ navbar h1 {
   font-family: "trebuchet MS", sans-serif;
   font-size: 250px;
   padding-top: 50px;
+  z-index: 1;
 }
 
 .headingDesktop {
@@ -337,7 +343,7 @@ navbar h1 {
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 50px;
+  font-size: 70px;
   text-decoration-line: underline
 }
 
@@ -359,13 +365,13 @@ navbar h1 {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: 1;
+  z-index: -10;
 }
 
 /*=========================================================================================================================*/
 
 .responsiveUltraWide {
-  top: 5%;
+  top: 7.5%;
   height: 650px;
   width: 650px;
   background-color: #00adee;
@@ -374,6 +380,7 @@ navbar h1 {
   font-family: "trebuchet MS", sans-serif;
   font-size: 300px;
   padding-top: 90px;
+  z-index: 1;
 }
 
 .headingUltraWide {
@@ -387,11 +394,7 @@ navbar h1 {
   text-align: center;
   justify-content: center;
   font-size: 90px;
-  text-decoration-line: underline
-}
-
-.dark headingUltraWide {
-  color: white;
+  text-decoration-line: underline;
 }
 
 .headingUltraWide:hover {
@@ -400,7 +403,7 @@ navbar h1 {
 }
 
 .pulsingUltraWide {
-  top: 0.1%;
+  top: 1%;
   border-radius: 50%;
   background-color: deepskyblue;
   width: 650px; /* here to change size of pulsing  */
@@ -408,10 +411,18 @@ navbar h1 {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: 1;
+  z-index: -10;
 }
 
 /*=========================================================================================================================*/
+
+/*
+
+COULDN'T FIND OUT HOW TO MAKE THE WRITING IN THE PAGE CHANGE COLOUR
+JUST THE NAVBAR!
+
+ */
+
 /*.dark.headingMobile {*/
 /*  margin-top: 2em;*/
 /*  text-transform: uppercase;*/

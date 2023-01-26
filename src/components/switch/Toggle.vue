@@ -78,5 +78,6 @@ input:checked + .toggler:before {
 .toggler.round:before {
   border-radius: 50%;
 }
+
 </style>
 
