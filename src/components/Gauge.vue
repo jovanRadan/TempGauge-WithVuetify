@@ -116,8 +116,8 @@ import Labels from "./Gauge/Labels.vue";
 import Pointer from "./Gauge/Pointer.vue";
 import PointerArcs from "./Gauge/PointerArcs.vue";
 import styleProps from "../lib/svgStyleProps";
-import {innerAnglePointerAdjustment} from "../lib/chart";
-import {easingInverse} from "../lib/easing";
+import {innerAnglePointerAdjustment} from "@/lib/chart";
+import {easingInverse} from "@/lib/easing";
 
 export default {
   name: "Gauge",
@@ -388,18 +388,6 @@ export default {
         willChange: "opacity",
       };
     },
-    // smallScreen() {
-    //   if(this.smallScreen > 480) {
-    //     return ...
-    //   } else if {
-    //     if(this.mediumScreen > 756) {
-    //       return ...
-    //   }
-    //     else {
-    //       return bigScreen;
-    //   }
-    //   }
-    // }
 
   },
   methods: {
@@ -441,31 +429,6 @@ svg {
   display: block;
   margin: auto;
   overflow: visible;
-}
-
-@media (max-width: 1010px) {
-  sizeOfGauge {
-    width: 700px;
-    height: 700px;
-  }
-}
-
-@media (max-width: 756px) {
-  sizeOfGauge {
-    width: 500px;
-    height: 500px;
-  }
-
-}
-
-@media (max-width: 480px) {
-  sizeOfGauge {
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 }
 
 </style>

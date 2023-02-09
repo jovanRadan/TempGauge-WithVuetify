@@ -2,8 +2,8 @@
   <header>
 
     <navbar>
-      <h1 class="totalNavbar">{{ mode }} Mode</h1>
-      <h1 class="totalNavbar"> (Press t to switch)</h1>
+      <h1 :class="TitleSize">{{ mode }} Mode</h1>
+      <h1 :class="TitleSize"> (Press T to switch)</h1>
       <Toggle :mode="mode" @toggle="$emit('toggle')"/>
     </navbar>
 
@@ -78,19 +78,19 @@ export default {
           return 'pulsingUltraWide'
       }
     },
-    navbarWriting() {
+    TitleSize() {
       switch (this.$vuetify.breakpoint.name) {
 
         case 'xs':
-          return 'navbarMobile'
+          return 'navTitleMobile'
         case 'sm':
-          return 'navbarTablet'
+          return 'navTitleTablet'
         case 'md':
-          return 'navbarMedium'
+          return 'navTitleMedium'
         case 'lg':
-          return 'navbarDesktop'
+          return 'navTitleDesktop'
         case 'xl':
-          return 'navbarUltraWide'
+          return 'navTitleUltraWide'
       }
     }
   }
@@ -112,11 +112,10 @@ navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  background: #d4d4d4;
+  height: 70px;
+  background: #adacac;
   transition: background 1.75s ease-in-out;
   width: 100%;
-  padding-right: 100px;
   z-index: 1000000;
   position: absolute;
 }
@@ -125,16 +124,35 @@ navbar {
   background: #364049;
 }
 
-navbar h1 {
-  font-size: 32px;
+.navTitleMobile {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.navTitleTablet {
+  font-size: 18px;
   text-transform: uppercase;
   font-weight: 900;
 }
 
-/*.navbarMobile h1 {*/
-/*  font-size: 10px;*/
-/*}*/
+.navTitleMedium {
+  font-size: 22px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
 
+.navTitleDesktop {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.navTitleUltraWide {
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
 /*==========================================================================================n*/
 
 .container {
@@ -154,18 +172,8 @@ navbar h1 {
 
 /*=========================================================================================================================*/
 
-.pulsingCircleContainer {
-  /*width: 200px;*/
-  /*height: 200px;*/
-  /*display: flex;*/
-  /*align-items: center;*/
-  /*justify-content: center;*/
-  /*overflow: hidden;*/
-  /*position: relative;*/
-}
-
 .responsiveMobile {
-  top: 10%;
+  top: 20%;
   height: 250px;
   width: 250px;
   background-color: #00adee;
@@ -174,7 +182,7 @@ navbar h1 {
   font-family: "trebuchet MS", sans-serif;
   font-size: 100px;
   padding-top: 40px;
-  visibility: unset;
+  z-index: 1;
 }
 
 .headingMobile {
@@ -213,7 +221,7 @@ navbar h1 {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: 1;
+  z-index: -10;
 }
 
 /*=========================================================================================================================*/
@@ -271,7 +279,7 @@ navbar h1 {
 /*=========================================================================================================================*/
 
 .responsiveMedium {
-  top: 5%;
+  top: 20%;
   height: 475px;
   width: 475px;
   background-color: #00adee;
@@ -371,7 +379,7 @@ navbar h1 {
 /*=========================================================================================================================*/
 
 .responsiveUltraWide {
-  top: 7.5%;
+  top: 12.5%;
   height: 650px;
   width: 650px;
   background-color: #00adee;
@@ -379,7 +387,7 @@ navbar h1 {
   color: white;
   font-family: "trebuchet MS", sans-serif;
   font-size: 300px;
-  padding-top: 90px;
+  padding-top: 125px;
   z-index: 1;
 }
 
@@ -419,7 +427,7 @@ navbar h1 {
 /*
 
 COULDN'T FIND OUT HOW TO MAKE THE WRITING IN THE PAGE CHANGE COLOUR
-JUST THE NAVBAR!
+Can only make it change in the NAVBAR!
 
  */
 

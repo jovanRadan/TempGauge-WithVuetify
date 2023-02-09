@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <the-header :mode="mode" @toggle="toggle"></the-header>
-<!--    <the-header :mode="mode"></the-header>-->
+    <!--    <the-header :mode="mode"></the-header>-->
 
 
     <aside>
@@ -11,35 +11,33 @@
 
       <button type="button" :class="buttonSizes" @click="random">Random Number</button>
     </aside>
+                                                    <!--  THE OTHER GAUGE IF WE WANT TO USE THE OTHER DESIGN  -->
+    <!--      <div class="Gauge">-->
+    <!--        <gauge-->
+    <!--            fontSize="1em"-->
+    <!--            :min="0"-->
+    <!--            :max="50"-->
+    <!--            :dp="1"-->
+    <!--            :value="exampleValue"-->
+    <!--            unit="°C"-->
+    <!--            style="width: 500px"-->
+    <!--            inactiveFill="#212121"-->
+    <!--            :minThreshold="23"-->
+    <!--            :maxThreshold="25"-->
+    <!--            minThresholdFill="lawngreen"-->
+    <!--            maxThresholdFill="darkred"-->
+    <!--            title-style="fill: #999999; font-size: 12px; font-weight: 600;  transform: translateY(-5px)"-->
+    <!--        />-->
 
-      <!--      <div class="Gauge">-->
-      <!--        <gauge-->
-      <!--            fontSize="1em"-->
-      <!--            :min="0"-->
-      <!--            :max="50"-->
-      <!--            :dp="1"-->
-      <!--            :value="exampleValue"-->
-      <!--            unit="°C"-->
-      <!--            style="width: 500px"-->
-      <!--            inactiveFill="#212121"-->
-      <!--            :minThreshold="23"-->
-      <!--            :maxThreshold="25"-->
-      <!--            minThresholdFill="lawngreen"-->
-      <!--            maxThresholdFill="darkred"-->
-      <!--            title-style="fill: #999999; font-size: 12px; font-weight: 600;  transform: translateY(-5px)"-->
-      <!--        />-->
-
-        <colourful-gauge
-            :value="exampleValue"
-            :min="0"
-            :max="50"
-            label-text="°C"
-            :width="380"
-            :height="350"
-        />
-
-        <!--        </div>-->
-    </div>
+    <colourful-gauge
+        :value="exampleValue"
+        :min="0"
+        :max="50"
+        label-text="°C"
+        :width="380"
+        :height="350"
+    />
+  </div>
 </template>
 
 <script>
@@ -64,7 +62,7 @@ export default {
     this.random();
   },
   created() {
-      window.addEventListener('keyup', this.keyPress)
+    window.addEventListener('keyup', this.keyPress)
   },
   methods: {
     random() {
@@ -84,19 +82,19 @@ export default {
         return 2 - (7.5625 * (pos -= 2.625 / 2.75) * pos + 0.984375);
       }
     },
-    keyPress (e) {
+    keyPress(e) {
       if (e.key === 't') {
         this.toggle()
       }
     },
-      toggle () {
-        if (this.mode === "dark") {
-          this.mode = "light"
-        } else {
-          this.mode = "dark"
-        }
+    toggle() {
+      if (this.mode === "dark") {
+        this.mode = "light"
+      } else {
+        this.mode = "dark"
       }
-    },
+    }
+  },
   computed: {
     valInt() {
       return parseInt(this.theVal);
@@ -121,13 +119,12 @@ export default {
 </script>
 
 <style>
-
-* {
-  font-family: sans-serif;
-  justify-items: center;
-  justify-content: center;
-  align-items: center;
-}
+/** {*/
+/*  font-family: sans-serif;*/
+/*  justify-items: center;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
 
 body {
   display: flex;
