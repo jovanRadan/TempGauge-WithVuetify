@@ -1,11 +1,13 @@
 <template>
   <header>
 
-    <navbar>
-      <h1 :class="TitleSize">{{ mode }} Mode</h1>
-      <h1 :class="TitleSize"> (Press T to switch)</h1>
-      <Toggle :mode="mode" @toggle="$emit('toggle')"/>
-    </navbar>
+    <v-row align="center" justify="center">
+      <navbar>
+        <h1 :class="TitleSize">{{ mode }} Mode</h1>
+        <h1 :class="TitleSize"> (Press T to switch)</h1>
+        <Toggle :mode="mode" @toggle="$emit('toggle')"/>
+      </navbar>
+    </v-row>
 
     <div class="container">
       <v-card :class="whichScreen">
@@ -125,9 +127,9 @@ navbar {
 }
 
 .navTitleMobile {
-    font-size: 13px;
-    text-transform: uppercase;
-    font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 .navTitleTablet {
@@ -153,6 +155,7 @@ navbar {
   text-transform: uppercase;
   font-weight: 900;
 }
+
 /*==========================================================================================n*/
 
 .container {
@@ -174,19 +177,19 @@ navbar {
 
 .responsiveMobile {
   top: 20%;
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 100px;
+  font-size: 150px;
   padding-top: 40px;
   z-index: 1;
 }
 
 .headingMobile {
-  margin-top: 2em;
+  margin-top: 2.5em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -195,7 +198,7 @@ navbar {
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 28px;
   text-decoration-line: underline
 }
 
@@ -205,6 +208,7 @@ navbar {
 
 .headingMobile:hover {
   letter-spacing: 10px;
+  font-size: 32px;
   transition: 800ms ease;
 }
 
@@ -216,8 +220,8 @@ navbar {
   top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
-  width: 250px; /* here to change size of pulsing  */
-  height: 250px; /* here to change size of pulsing  */
+  width: 300px; /* here to change size of pulsing  */
+  height: 300px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
@@ -228,13 +232,13 @@ navbar {
 
 .responsiveTablet {
   top: 15%;
-  height: 450px;
-  width: 450px;
+  height: 500px;
+  width: 500px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 200px;
+  font-size: 275px;
   padding-top: 65px;
   z-index: 1;
 
@@ -261,6 +265,7 @@ navbar {
 
 .headingTablet:hover {
   letter-spacing: 10px;
+  font-size: 70px;
   transition: 800ms ease;
 }
 
@@ -268,8 +273,8 @@ navbar {
   top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
-  width: 450px; /* here to change size of pulsing  */
-  height: 450px; /* here to change size of pulsing  */
+  width: 500px; /* here to change size of pulsing  */
+  height: 500px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
@@ -279,15 +284,15 @@ navbar {
 /*=========================================================================================================================*/
 
 .responsiveMedium {
-  top: 20%;
-  height: 475px;
-  width: 475px;
+  top: 15%;
+  height: 525px;
+  width: 525px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 225px;
-  padding-top: 55px;
+  font-size: 275px;
+  padding-top: 80px;
   z-index: 1;
 }
 
@@ -302,7 +307,7 @@ navbar {
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 60px;
+  font-size: 65px;
   text-decoration-line: underline
 }
 
@@ -312,6 +317,7 @@ navbar {
 
 .headingMedium:hover {
   letter-spacing: 10px;
+  font-size: 80px;
   transition: 800ms ease;
 }
 
@@ -319,8 +325,8 @@ navbar {
   top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
-  width: 475px; /* here to change size of pulsing  */
-  height: 475px; /* here to change size of pulsing  */
+  width: 525px; /* here to change size of pulsing  */
+  height: 525px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
@@ -331,19 +337,19 @@ navbar {
 
 .responsiveDesktop {
   top: 10%;
-  height: 500px;
-  width: 500px;
+  height: 600px;
+  width: 600px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 250px;
-  padding-top: 50px;
+  font-size: 325px;
+  padding-top: 90px;
   z-index: 1;
 }
 
 .headingDesktop {
-  margin-top: 1.5em;
+  margin-top: 2.25em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -361,6 +367,7 @@ navbar {
 
 .headingDesktop:hover {
   letter-spacing: 10px;
+  font-size: 80px;
   transition: 800ms ease;
 }
 
@@ -368,8 +375,8 @@ navbar {
   top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
-  width: 500px; /* here to change size of pulsing  */
-  height: 500px; /* here to change size of pulsing  */
+  width: 600px; /* here to change size of pulsing  */
+  height: 600px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
@@ -379,20 +386,20 @@ navbar {
 /*=========================================================================================================================*/
 
 .responsiveUltraWide {
-  top: 12.5%;
-  height: 650px;
-  width: 650px;
+  top: 10.5%;
+  height: 850px;
+  width: 850px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 300px;
+  font-size: 450px;
   padding-top: 125px;
   z-index: 1;
 }
 
 .headingUltraWide {
-  margin-top: 1.75em;
+  margin-top: 2.25em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -401,12 +408,13 @@ navbar {
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 90px;
+  font-size: 100px;
   text-decoration-line: underline;
 }
 
 .headingUltraWide:hover {
   letter-spacing: 10px;
+  font-size: 115px;
   transition: 800ms ease;
 }
 
@@ -414,8 +422,8 @@ navbar {
   top: 1%;
   border-radius: 50%;
   background-color: deepskyblue;
-  width: 650px; /* here to change size of pulsing  */
-  height: 650px; /* here to change size of pulsing  */
+  width: 850px; /* here to change size of pulsing  */
+  height: 850px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);

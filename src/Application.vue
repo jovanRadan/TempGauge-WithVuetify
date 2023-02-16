@@ -5,13 +5,12 @@
     <the-header :mode="mode" @toggle="toggle"></the-header>
     <!--    <the-header :mode="mode"></the-header>-->
 
-
     <aside>
       <button type="button" :class="buttonSizes" @click="minToMax">0 - 50 Toggle</button>
 
       <button type="button" :class="buttonSizes" @click="random">Random Number</button>
     </aside>
-                                                    <!--  THE OTHER GAUGE IF WE WANT TO USE THE OTHER DESIGN  -->
+    <!--  THE OTHER GAUGE IF WE WANT TO USE THE OTHER DESIGN  -->
     <!--      <div class="Gauge">-->
     <!--        <gauge-->
     <!--            fontSize="1em"-->
@@ -29,14 +28,16 @@
     <!--            title-style="fill: #999999; font-size: 12px; font-weight: 600;  transform: translateY(-5px)"-->
     <!--        />-->
 
-    <colourful-gauge
-        :value="exampleValue"
-        :min="0"
-        :max="50"
-        label-text="°C"
-        :width="380"
-        :height="350"
-    />
+    <v-row align="center" justify="center">
+      <colourful-gauge
+          :value="exampleValue"
+          :min="0"
+          :max="50"
+          label-text="°C"
+          :width="380"
+          :height="350"
+      />
+    </v-row>
   </div>
 </template>
 
