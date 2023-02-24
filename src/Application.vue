@@ -10,6 +10,7 @@
 
       <button type="button" :class="buttonSizes" @click="random">Random Number</button>
     </aside>
+
     <!--  THE OTHER GAUGE IF WE WANT TO USE THE OTHER DESIGN  -->
     <!--      <div class="Gauge">-->
     <!--        <gauge-->
@@ -120,13 +121,6 @@ export default {
 </script>
 
 <style>
-/** {*/
-/*  font-family: sans-serif;*/
-/*  justify-items: center;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*}*/
-
 body {
   display: flex;
   align-items: center;
@@ -139,6 +133,7 @@ body {
 
 aside {
   margin: auto;
+  padding-top: 8.5em;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

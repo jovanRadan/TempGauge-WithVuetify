@@ -403,7 +403,6 @@ navbar {
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
-  margin-bottom: -4.5em;
   letter-spacing: 6px;
   color: #427f93;
   text-align: center;
