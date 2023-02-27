@@ -1,7 +1,6 @@
 <template>
   <div class="Application" :class="mode">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
     <the-header :mode="mode" @toggle="toggle"></the-header>
     <!--    <the-header :mode="mode"></the-header>-->
 
@@ -10,7 +9,15 @@
 
       <button type="button" :class="buttonSizes" @click="random">Random Number</button>
     </aside>
+    <div align="center" justify="center">
+      <p> Status: {{ status }}</p>
 
+      <ul align="right" justify="right">
+        <li v-for="(msg, index) in messages" :key="index">
+          {{ msg.topic }} = <span style="font-weight: bold;">{{ msg.payload }} °C</span> at {{ msg.date }}
+        </li>
+      </ul>
+    </div>
     <!--  THE OTHER GAUGE IF WE WANT TO USE THE OTHER DESIGN  -->
     <!--      <div class="Gauge">-->
     <!--        <gauge-->
@@ -29,7 +36,7 @@
     <!--            title-style="fill: #999999; font-size: 12px; font-weight: 600;  transform: translateY(-5px)"-->
     <!--        />-->
 
-    <v-row align="center" justify="center">
+    <v-row align="left" justify="left">
       <colourful-gauge
           :value="exampleValue"
           :min="0"
@@ -46,6 +53,7 @@
 import Gauge from "./components/Gauge.vue";
 import ColourfulGauge from "@/components/Gauge2/ColourfulGauge";
 import TheHeader from "@/components/layout/TheHeader";
+import * as Paho from 'paho-mqtt';
 
 export default {
   name: "Application",
@@ -57,11 +65,25 @@ export default {
   data() {
     return {
       exampleValue: 0,
-      mode: 'light'
+      mode: 'light',
+      host: 'localhost',
+      port: 9001,
+      path: '/mqtt',
+      useTLS: false,
+      cleansession: true,
+      username: null,
+      password: null,
+      topic: 'test',
+      status: 'disconnected',
+      messages: []
     };
   },
   mounted() {
     this.random();
+    this.connect();
+  },
+  beforeDestroy() {
+    this.mqtt.disconnect();
   },
   created() {
     window.addEventListener('keyup', this.keyPress)
@@ -95,6 +117,67 @@ export default {
       } else {
         this.mode = "dark"
       }
+    },
+    connect() {
+      this.mqtt = new Paho.Client(
+          this.host,
+          this.port,
+          this.path,
+          'web_' + parseInt(Math.random() * 100, 10)
+      );
+      const options = {
+        timeout: 3,
+        useSSL: this.useTLS,
+        cleanSession: this.cleansession,
+        onSuccess: this.onConnect,
+        onFailure: message => {
+          this.status = `Connection failed: ${message.errorMessage}. Retrying`;
+          setTimeout(this.connect, 5000);
+        }
+      };
+
+      this.mqtt.onConnectionLost = this.onConnectionLost;
+      this.mqtt.onMessageArrived = this.onMessageArrived;
+
+      if (this.username != null) {
+        options.userName = this.username;
+        options.password = this.password;
+      }
+
+      this.mqtt.connect(options);
+    },
+    onConnect() {
+      this.status = `Connected to ${this.host}:${this.port}${this.path}`;
+      // Connection succeeded; subscribe to our topic
+      this.mqtt.subscribe(this.topic, { qos: 0 });
+    },
+    onConnectionLost(response) {
+      this.status = `Connection lost: ${response.errorMessage}. Reconnecting`;
+      setTimeout(this.connect, 5000);
+    },
+    onMessageArrived(message) {
+      const topic = message.destinationName;
+      const payload = message.payloadString;
+      const date = new Date();
+      const day = date.getDate();
+      const hour =
+          date.getHours().toString().length == 1
+              ? '0' + date.getHours().toString()
+              : date.getHours().toString();
+      const minute =
+          date.getMinutes().toString().length == 1
+              ? '0' + date.getMinutes().toString()
+              : date.getMinutes().toString();
+      const second =
+          date.getSeconds().toString().length == 1
+              ? '0' + date.getSeconds().toString()
+              : date.getSeconds().toString();
+
+      this.messages.unshift({
+        topic,
+        payload,
+        date: `${day}.${parseInt(date.getMonth()) + 1}.${date.getFullYear()} ${hour}:${minute}:${second}`
+      });
     }
   },
   computed: {
@@ -225,6 +308,10 @@ h3 {
   color: #192734;
   transition: background 1.75s ease-in-out;
   width: 100vw;
+}
+
+p {
+  font-size: 30px;
 }
 
 .dark {
