@@ -12,7 +12,8 @@
     <div align="center" justify="center">
       <p> Status: {{ status }}</p>
 
-      <ul align="right" justify="right">
+      <ul >
+<!--          align="right" justify="right">-->
         <li v-for="(msg, index) in messages" :key="index">
           {{ msg.topic }} = <span style="font-weight: bold;">{{ msg.payload }} °C</span> at {{ msg.date }}
         </li>
@@ -38,7 +39,7 @@
 
     <v-row align="left" justify="left">
       <colourful-gauge
-          :value="exampleValue"
+          :value=" 0 "
           :min="0"
           :max="50"
           label-text="°C"
@@ -46,6 +47,7 @@
           :height="350"
       />
     </v-row>
+    <h2>Log:</h2>
   </div>
 </template>
 
@@ -54,6 +56,7 @@ import Gauge from "./components/Gauge.vue";
 import ColourfulGauge from "@/components/Gauge2/ColourfulGauge";
 import TheHeader from "@/components/layout/TheHeader";
 import * as Paho from 'paho-mqtt';
+
 
 export default {
   name: "Application",
@@ -66,9 +69,10 @@ export default {
     return {
       exampleValue: 0,
       mode: 'light',
-      host: 'localhost',
-      port: 9001,
-      path: '/mqtt',
+      //=======================================================
+      host: 'server',
+      port: null,
+      path: null,
       useTLS: false,
       cleansession: true,
       username: null,
@@ -80,7 +84,7 @@ export default {
   },
   mounted() {
     this.random();
-    this.connect();
+    this.MQTTconnect();
   },
   beforeDestroy() {
     this.mqtt.disconnect();
@@ -118,11 +122,11 @@ export default {
         this.mode = "dark"
       }
     },
-    connect() {
+    MQTTconnect() {
       this.mqtt = new Paho.Client(
-          this.host,
-          this.port,
-          this.path,
+          'serbia.gdi.net',   // host
+          80,                 // port
+          '/ws/mqtt/',        // path
           'web_' + parseInt(Math.random() * 100, 10)
       );
       const options = {
@@ -132,7 +136,7 @@ export default {
         onSuccess: this.onConnect,
         onFailure: message => {
           this.status = `Connection failed: ${message.errorMessage}. Retrying`;
-          setTimeout(this.connect, 5000);
+          setTimeout(this.MQTTconnect, 5000);
         }
       };
 
@@ -153,30 +157,20 @@ export default {
     },
     onConnectionLost(response) {
       this.status = `Connection lost: ${response.errorMessage}. Reconnecting`;
-      setTimeout(this.connect, 5000);
+      setTimeout(this.MQTTconnect, 5000);
     },
     onMessageArrived(message) {
       const topic = message.destinationName;
       const payload = message.payloadString;
+
       const date = new Date();
       const day = date.getDate();
-      const hour =
-          date.getHours().toString().length == 1
-              ? '0' + date.getHours().toString()
-              : date.getHours().toString();
-      const minute =
-          date.getMinutes().toString().length == 1
-              ? '0' + date.getMinutes().toString()
-              : date.getMinutes().toString();
-      const second =
-          date.getSeconds().toString().length == 1
-              ? '0' + date.getSeconds().toString()
-              : date.getSeconds().toString();
+      const hour = date.getHours().toString().length === 1 ? '0' + date.getHours().toString() : date.getHours().toString();
+      const minute = date.getMinutes().toString().length === 1 ? '0' + date.getMinutes().toString() : date.getMinutes().toString();
+      const second = date.getSeconds().toString().length === 1 ? '0' + date.getSeconds().toString() : date.getSeconds().toString();
 
       this.messages.unshift({
-        topic,
-        payload,
-        date: `${day}.${parseInt(date.getMonth()) + 1}.${date.getFullYear()} ${hour}:${minute}:${second}`
+        topic, payload, date: `${day}.${parseInt(date.getMonth()) + 1}.${date.getFullYear()} ${hour}:${minute}:${second}`
       });
     }
   },
@@ -216,7 +210,6 @@ body {
 
 aside {
   margin: auto;
-  padding-top: 8.5em;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

@@ -185,6 +185,7 @@ navbar {
   font-family: "trebuchet MS", sans-serif;
   font-size: 150px;
   padding-top: 40px;
+  padding-bottom: -40px;
   z-index: 1;
 }
 
@@ -193,7 +194,6 @@ navbar {
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
-  margin-bottom: -4.5em;
   letter-spacing: 6px;
   color: #427f93;
   text-align: center;
