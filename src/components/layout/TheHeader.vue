@@ -1,6 +1,5 @@
 <template>
   <header>
-
     <v-row align="center" justify="center">
       <navbar>
         <h1 :class="TitleSize">{{ mode }} Mode</h1>
@@ -19,10 +18,10 @@
             <div :class="pulsingCircle" style="animation-delay: 2.5s"></div>
             <div :class="pulsingCircle" style="animation-delay: 3.5s"></div>
           </div>
-          <v-card-title :class="sizeOfTitle">Server Room Temperature Log</v-card-title>
         </div>
       </v-card>
     </div>
+    <v-card-title :class="sizeOfTitle"> Server Room Temperature Log</v-card-title>
   </header>
 </template>
 
@@ -159,6 +158,7 @@ navbar {
 /*==========================================================================================n*/
 
 .container {
+  width: 100%;
   height: 110vh;
 }
 
@@ -202,18 +202,10 @@ navbar {
   text-decoration-line: underline
 }
 
-/*.dark headingMobile {*/
-/*  color: white;*/
-/*}*/
-
 .headingMobile:hover {
   letter-spacing: 10px;
   font-size: 32px;
   transition: 800ms ease;
-}
-
-.dark.headingMobile {
-  color: white;
 }
 
 .pulsingMobile {
@@ -241,9 +233,7 @@ navbar {
   font-size: 275px;
   padding-top: 65px;
   z-index: 1;
-
 }
-
 
 .headingTablet {
   margin-top: 2em;
@@ -258,10 +248,6 @@ navbar {
   font-size: 60px;
   text-decoration-line: underline
 }
-
-/*.dark headingTablet {*/
-/*  color: white;*/
-/*}*/
 
 .headingTablet:hover {
   letter-spacing: 10px;
@@ -296,7 +282,6 @@ navbar {
   z-index: 1;
 }
 
-
 .headingMedium {
   margin-top: 1.5em;
   text-transform: uppercase;
@@ -310,10 +295,6 @@ navbar {
   font-size: 65px;
   text-decoration-line: underline
 }
-
-/*.dark headingMedium {*/
-/*  color: white;*/
-/*}*/
 
 .headingMedium:hover {
   letter-spacing: 10px;
@@ -361,10 +342,6 @@ navbar {
   text-decoration-line: underline
 }
 
-/*.dark headingDesktop {*/
-/*  color: white;*/
-/*}*/
-
 .headingDesktop:hover {
   letter-spacing: 10px;
   font-size: 80px;
@@ -386,7 +363,7 @@ navbar {
 /*=========================================================================================================================*/
 
 .responsiveUltraWide {
-  top: 10.5%;
+  top: 10%;
   height: 850px;
   width: 850px;
   background-color: #00adee;
@@ -394,12 +371,12 @@ navbar {
   color: white;
   font-family: "trebuchet MS", sans-serif;
   font-size: 450px;
-  padding-top: 125px;
+  padding-top: 155px;
   z-index: 1;
 }
 
 .headingUltraWide {
-  margin-top: 2.25em;
+  margin-top: -5em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -407,8 +384,11 @@ navbar {
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 100px;
+  font-size: 90px;
   text-decoration-line: underline;
+  width: 75%;
+  z-index: 1000;
+
 }
 
 .headingUltraWide:hover {
@@ -429,44 +409,8 @@ navbar {
   z-index: -10;
 }
 
-/*=========================================================================================================================*/
-
-/*
-
-COULDN'T FIND OUT HOW TO MAKE THE WRITING IN THE PAGE CHANGE COLOUR
-Can only make it change in the NAVBAR!
-
- */
-
-/*.dark.headingMobile {*/
-/*  margin-top: 2em;*/
-/*  text-transform: uppercase;*/
-/*  font-family: 'Gambetta', serif;*/
-/*  transition: 1000ms ease-out;*/
-/*  margin-bottom: -4.5em;*/
-/*  letter-spacing: 6px;*/
-/*  color: black;*/
-/*  text-align: center;*/
-/*  justify-content: center;*/
-/*  font-size: 30px;*/
-/*  text-decoration-line: underline*/
-/*}*/
-
-/*.dark.headingTablet {*/
-/*  color: white;*/
-/*}*/
-
-/*.dark.headingMedium {*/
-/*  color: white;*/
-/*}*/
-
-/*.dark.headingDesktop {*/
-/*  color: white;*/
-/*}*/
-
-/*.dark.headingUltraWide {*/
-/*  color: white;*/
-/*}*/
-
+.fullWidth {
+  width: 100%
+}
 
 </style>

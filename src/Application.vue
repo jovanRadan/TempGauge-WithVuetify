@@ -2,67 +2,40 @@
   <div class="Application" :class="mode">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <the-header :mode="mode" @toggle="toggle"></the-header>
-    <!--    <the-header :mode="mode"></the-header>-->
 
-    <aside>
-      <button type="button" :class="buttonSizes" @click="minToMax">0 - 50 Toggle</button>
+    <p align="center" justify="center"> Status: {{ status }}</p>
 
-      <button type="button" :class="buttonSizes" @click="random">Random Number</button>
-    </aside>
-    <div align="center" justify="center">
-      <p> Status: {{ status }}</p>
-
-      <ul >
-<!--          align="right" justify="right">-->
-        <li v-for="(msg, index) in messages" :key="index">
-          {{ msg.topic }} = <span style="font-weight: bold;">{{ msg.payload }} °C</span> at {{ msg.date }}
-        </li>
-      </ul>
+    <div :class="containerApplication">
+      <div :class="colourfulGauge">
+        <colourful-gauge
+            :value="currentValue"
+            :min="0"
+            :max="50"
+            label-text="°C"
+            :width="380"
+            :height="350"
+        />
+      </div>
+      <div :class="logLayout">
+        <ul v-for="index in Math.min(7, messages.length)" :key="index">
+          <span style="font-weight: bold;">{{ topic }}</span> = {{ messages[index-1].payload }} °C <span style="font-weight: bold;"> at {{
+            formatDate(new Date()) + "  " + messages[index-1].date
+          }} </span>
+        </ul>
+      </div>
     </div>
-    <!--  THE OTHER GAUGE IF WE WANT TO USE THE OTHER DESIGN  -->
-    <!--      <div class="Gauge">-->
-    <!--        <gauge-->
-    <!--            fontSize="1em"-->
-    <!--            :min="0"-->
-    <!--            :max="50"-->
-    <!--            :dp="1"-->
-    <!--            :value="exampleValue"-->
-    <!--            unit="°C"-->
-    <!--            style="width: 500px"-->
-    <!--            inactiveFill="#212121"-->
-    <!--            :minThreshold="23"-->
-    <!--            :maxThreshold="25"-->
-    <!--            minThresholdFill="lawngreen"-->
-    <!--            maxThresholdFill="darkred"-->
-    <!--            title-style="fill: #999999; font-size: 12px; font-weight: 600;  transform: translateY(-5px)"-->
-    <!--        />-->
-
-    <v-row align="left" justify="left">
-      <colourful-gauge
-          :value=" 0 "
-          :min="0"
-          :max="50"
-          label-text="°C"
-          :width="380"
-          :height="350"
-      />
-    </v-row>
-    <h2>Log:</h2>
   </div>
 </template>
 
 <script>
-import Gauge from "./components/Gauge.vue";
 import ColourfulGauge from "@/components/Gauge2/ColourfulGauge";
 import TheHeader from "@/components/layout/TheHeader";
 import * as Paho from 'paho-mqtt';
-
 
 export default {
   name: "Application",
   components: {
     TheHeader,
-    Gauge,
     ColourfulGauge,
   },
   data() {
@@ -70,20 +43,20 @@ export default {
       exampleValue: 0,
       mode: 'light',
       //=======================================================
-      host: 'server',
-      port: null,
-      path: null,
+      host: 'serbia.gdi.net ',
+      port: 80,
+      path: ' /ws/mqtt/',
       useTLS: false,
       cleansession: true,
       username: null,
       password: null,
-      topic: 'test',
-      status: 'disconnected',
-      messages: []
+      topic: 'temperature',
+      status: 'connecting',
+      messages: [],
+      currentValue: 0, // another name for payload (check line 145)
     };
   },
   mounted() {
-    this.random();
     this.MQTTconnect();
   },
   beforeDestroy() {
@@ -93,12 +66,6 @@ export default {
     window.addEventListener('keyup', this.keyPress)
   },
   methods: {
-    random() {
-      this.exampleValue = Math.random() * Math.floor(50);
-    },
-    minToMax() {
-      this.exampleValue = this.exampleValue === 0 ? 50 : 0;
-    },
     easeOutBounce(pos) {
       if (pos < 1 / 2.75) {
         return 7.5625 * pos * pos;
@@ -153,7 +120,7 @@ export default {
     onConnect() {
       this.status = `Connected to ${this.host}:${this.port}${this.path}`;
       // Connection succeeded; subscribe to our topic
-      this.mqtt.subscribe(this.topic, { qos: 0 });
+      this.mqtt.subscribe(this.topic, {qos: 0});
     },
     onConnectionLost(response) {
       this.status = `Connection lost: ${response.errorMessage}. Reconnecting`;
@@ -163,36 +130,67 @@ export default {
       const topic = message.destinationName;
       const payload = message.payloadString;
 
+      this.currentValue = payload
+
       const date = new Date();
-      const day = date.getDate();
+
       const hour = date.getHours().toString().length === 1 ? '0' + date.getHours().toString() : date.getHours().toString();
       const minute = date.getMinutes().toString().length === 1 ? '0' + date.getMinutes().toString() : date.getMinutes().toString();
       const second = date.getSeconds().toString().length === 1 ? '0' + date.getSeconds().toString() : date.getSeconds().toString();
 
+
       this.messages.unshift({
-        topic, payload, date: `${day}.${parseInt(date.getMonth()) + 1}.${date.getFullYear()} ${hour}:${minute}:${second}`
+        topic, payload, date: `${hour}:${minute}:${second}`
       });
-    }
+    },
+    formatDate(date) {
+      const options = {day: 'numeric', month: 'numeric', year: 'numeric'};
+      return date.toLocaleDateString('en-GB', options);
+    },
   },
   computed: {
-    valInt() {
-      return parseInt(this.theVal);
-    },
-    buttonSizes() {
+    containerApplication() {
       switch (this.$vuetify.breakpoint.name) {
-
         case 'xs':
-          return 'buttonMobile'
+          return 'containerApplicationMobile'
         case 'sm':
-          return 'buttonTablet'
+          return 'containerApplicationTablet'
         case 'md':
-          return 'buttonMedium'
+          return 'containerApplicationMedium'
         case 'lg':
-          return 'buttonDesktop'
+          return 'containerApplicationDesktop'
         case 'xl':
-          return 'buttonUltraWide'
+          return 'containerApplicationUltraWide'
       }
     },
+    colourfulGauge() {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          return 'positionOfGaugeMobile'
+        case 'sm':
+          return 'positionOfGaugeTablet'
+        case 'md':
+          return 'positionOfGaugeMedium'
+        case 'lg':
+          return 'positionOfGaugeDesktop'
+        case 'xl':
+          return 'positionOfGaugeUltraWide'
+      }
+    },
+    logLayout() {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          return 'sizeOfLogMobile'
+        case 'sm':
+          return 'sizeOfLogTablet'
+        case 'md':
+          return 'sizeOfLogMedium'
+        case 'lg':
+          return 'sizeOfLogDesktop'
+        case 'xl':
+          return 'sizeOfLogUltraWide'
+      }
+    }
   }
 };
 </script>
@@ -205,18 +203,89 @@ body {
   font-family: 'Work Sans', sans-serif;
   font-weight: 900;
   transition: background 0.3s ease-in-out;
+}
+
+/*==========================================================================================n*/
+.containerApplicationMobile {
+}
+
+.containerApplicationTablet {
+  margin: auto;
+  justify-items: center;
+  justify-content: center;
+  justify-self: center;
 
 }
 
-aside {
-  margin: auto;
+.containerApplicationMedium {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+.containerApplicationDesktop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.containerApplicationUltraWide {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/*==========================================================================================n*/
+.positionOfGaugeMobile {
+  width: 75%;
+}
+
+.positionOfGaugeTablet {
+  width: 100%;
+}
+
+.positionOfGaugeMedium {
+  width: 50%;
+}
+
+.positionOfGaugeDesktop {
+  width: 50%;
+}
+
+.positionOfGaugeUltraWide {
+  width: 50%;
+}
+
+/*==========================================================================================n*/
+.sizeOfLogMobile {
+  padding: 0.8em;
+}
+
+.sizeOfLogTablet {
+  padding: 1em;
+  font-size: 2em;
   text-align: center;
-  grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
-  grid-gap: 1em;
-  place-items: center center;
+}
+
+.sizeOfLogMedium {
+  width: 50%;
+  font-size: 15px;
+  padding: 0.5em;
+  padding-right: 1em;
+}
+
+.sizeOfLogDesktop {
+  width: 50%;
+  font-size: 20px;
+  padding: 0.5em;
+  padding-right: 1em;
+}
+
+.sizeOfLogUltraWide {
+  width: 50%;
+  font-size: 35px;
+  padding: 0.5em;
+  padding-right: 1em;
 }
 
 h3 {
@@ -231,73 +300,14 @@ h3 {
   font-family: sans-serif;
 }
 
-.buttonMobile {
-  border: none;
-  border-radius: 5px;
-  background-color: #187bcd;
-  color: #FFFFFF;
-  display: block;
-  font-weight: bold;
-  font-size: 1.5em;
-  height: 2em;
-  margin: auto 1em;
-  text-align: center;
-}
-
-.buttonTablet {
-  border: none;
-  border-radius: 5px;
-  background-color: #187bcd;
-  color: #fff;
-  display: block;
-  font-weight: bold;
-  font-size: 2em;
-  height: 2em;
-  margin: auto 1em;
-  text-align: center;
-}
-
-.buttonMedium {
-  border: none;
-  border-radius: 5px;
-  background-color: #187bcd;
-  color: #fff;
-  display: block;
-  font-weight: bold;
-  font-size: 2em;
-  height: 2em;
-  margin: auto 1em;
-  text-align: center;
-}
-
-.buttonDesktop {
-  border: none;
-  border-radius: 5px;
-  background-color: #187bcd;
-  color: #fff;
-  display: block;
-  font-weight: bold;
-  font-size: 2em;
-  height: 2em;
-  margin: auto 1em;
-  text-align: center;
-}
-
-.buttonUltraWide {
-  border: none;
-  border-radius: 5px;
-  background-color: #187bcd;
-  color: #FFFFFF;
-  display: block;
-  font-weight: bold;
-  font-size: 3em;
-  height: 2em;
-  margin: auto 1em;
-  text-align: center;
-}
+/*li {*/
+/*  !*padding: 0.5em;*!*/
+/*  font-size: 25px;*/
+/*  width: 50%;*/
+/*}*/
 
 .Application {
-  background-color: #F3F3F3;
+  background: #F3EFE5;
   color: #192734;
   transition: background 1.75s ease-in-out;
   width: 100vw;

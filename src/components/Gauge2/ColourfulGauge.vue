@@ -419,28 +419,14 @@ export default {
         case 'xs':
           return 380
         case 'sm':
-          return 680
+          return 850
         case 'md':
-          return 700
+          return 450
         case 'lg':
-          return 700
+          return 800
         case 'xl':
-          return 1000
-      }
-    },
-    getHeight() {
-      switch (this.$vuetify.breakpoint.name) {
+          return 1100
 
-        case 'xs':
-          return 380
-        case 'sm':
-          return 680
-        case 'md':
-          return 700
-        case 'lg':
-          return 1500
-        case 'xl':
-          return 2000
       }
     },
   },
