@@ -4,7 +4,7 @@
       <navbar>
         <h1 :class="TitleSize">{{ mode }} Mode</h1>
         <h1 :class="TitleSize"> (Press T to switch)</h1>
-        <Toggle :mode="mode" @toggle="$emit('toggle')"/>
+        <Toggle :class="TitleSize" :mode="mode" @toggle="$emit('toggle')"/>
       </navbar>
     </v-row>
 
@@ -20,8 +20,8 @@
           </div>
         </div>
       </v-card>
+      <v-card-title :class="sizeOfTitle"> Server Room Temperature Log</v-card-title>
     </div>
-    <v-card-title :class="sizeOfTitle"> Server Room Temperature Log</v-card-title>
   </header>
 </template>
 
@@ -132,27 +132,33 @@ navbar {
 }
 
 .navTitleTablet {
-  font-size: 18px;
+  font-size: 25px;
   text-transform: uppercase;
   font-weight: 900;
+  width: 33%;
+
 }
 
 .navTitleMedium {
   font-size: 22px;
   text-transform: uppercase;
   font-weight: 900;
+  width: 33%;
 }
 
 .navTitleDesktop {
   font-size: 30px;
   text-transform: uppercase;
   font-weight: 900;
+  width: 33%;
+
 }
 
 .navTitleUltraWide {
   font-size: 40px;
   text-transform: uppercase;
   font-weight: 900;
+  width: 33%;
 }
 
 /*==========================================================================================n*/
@@ -190,7 +196,7 @@ navbar {
 }
 
 .headingMobile {
-  margin-top: 2.5em;
+  margin-top: 6em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -236,7 +242,7 @@ navbar {
 }
 
 .headingTablet {
-  margin-top: 2em;
+  margin-top: 5em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -283,7 +289,7 @@ navbar {
 }
 
 .headingMedium {
-  margin-top: 1.5em;
+  margin-top: 3em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -292,13 +298,13 @@ navbar {
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 65px;
+  font-size: 55px;
   text-decoration-line: underline
 }
 
 .headingMedium:hover {
   letter-spacing: 10px;
-  font-size: 80px;
+  font-size: 65px;
   transition: 800ms ease;
 }
 
@@ -318,19 +324,19 @@ navbar {
 
 .responsiveDesktop {
   top: 10%;
-  height: 600px;
-  width: 600px;
+  height: 550px;
+  width: 550px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 325px;
-  padding-top: 90px;
+  font-size: 300px;
+  padding-top: 85px;
   z-index: 1;
 }
 
 .headingDesktop {
-  margin-top: 2.25em;
+  margin-top: 1.75em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -344,7 +350,7 @@ navbar {
 
 .headingDesktop:hover {
   letter-spacing: 10px;
-  font-size: 80px;
+  font-size: 75px;
   transition: 800ms ease;
 }
 
@@ -352,8 +358,8 @@ navbar {
   top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
-  width: 600px; /* here to change size of pulsing  */
-  height: 600px; /* here to change size of pulsing  */
+  width: 550px; /* here to change size of pulsing  */
+  height: 550px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
@@ -376,7 +382,7 @@ navbar {
 }
 
 .headingUltraWide {
-  margin-top: -5em;
+  margin-top: 2.25em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;
@@ -384,16 +390,16 @@ navbar {
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 90px;
+  font-size: 105px;
   text-decoration-line: underline;
-  width: 75%;
-  z-index: 1000;
+  width: 80%;
+  z-index: 1000000;
 
 }
 
 .headingUltraWide:hover {
   letter-spacing: 10px;
-  font-size: 115px;
+  font-size: 117.5px;
   transition: 800ms ease;
 }
 
@@ -406,7 +412,7 @@ navbar {
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
-  z-index: -10;
+  z-index: -100;
 }
 
 .fullWidth {

@@ -17,7 +17,7 @@
         />
       </div>
       <div :class="logLayout">
-        <ul v-for="index in Math.min(7, messages.length)" :key="index">
+        <ul v-for="index in Math.min(8, messages.length)" :key="index">
           <span style="font-weight: bold;">{{ topic }}</span> = {{ messages[index-1].payload }} °C <span style="font-weight: bold;"> at {{
             formatDate(new Date()) + "  " + messages[index-1].date
           }} </span>
@@ -241,19 +241,25 @@ body {
 }
 
 .positionOfGaugeTablet {
+  display: flex;
   width: 100%;
+  justify-content: center;
 }
 
 .positionOfGaugeMedium {
+  display: flex;
   width: 50%;
-}
+  justify-content: center;}
 
 .positionOfGaugeDesktop {
+  display: flex;
   width: 50%;
-}
+  justify-content: center;}
 
 .positionOfGaugeUltraWide {
+  display: flex;
   width: 50%;
+  justify-content: center;
 }
 
 /*==========================================================================================n*/
@@ -269,23 +275,26 @@ body {
 
 .sizeOfLogMedium {
   width: 50%;
-  font-size: 15px;
+  font-size: 20px;
   padding: 0.5em;
   padding-right: 1em;
+  text-align: center;
+
 }
 
 .sizeOfLogDesktop {
   width: 50%;
-  font-size: 20px;
-  padding: 0.5em;
+  font-size: 27.5px;
+  padding: 0.2em;
   padding-right: 1em;
+  text-align: center;
 }
 
 .sizeOfLogUltraWide {
   width: 50%;
-  font-size: 35px;
+  font-size: 40px;
   padding: 0.5em;
-  padding-right: 1em;
+  text-align: center;
 }
 
 h3 {
@@ -299,12 +308,6 @@ h3 {
   margin: 5px 0 123px;
   font-family: sans-serif;
 }
-
-/*li {*/
-/*  !*padding: 0.5em;*!*/
-/*  font-size: 25px;*/
-/*  width: 50%;*/
-/*}*/
 
 .Application {
   background: #F3EFE5;

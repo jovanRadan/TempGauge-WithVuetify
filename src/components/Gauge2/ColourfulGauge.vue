@@ -421,11 +421,11 @@ export default {
         case 'sm':
           return 850
         case 'md':
-          return 450
+          return 500
         case 'lg':
           return 800
         case 'xl':
-          return 1100
+          return 1150
 
       }
     },
