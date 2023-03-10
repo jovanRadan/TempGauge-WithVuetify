@@ -126,7 +126,7 @@ navbar {
 }
 
 .navTitleMobile {
-  font-size: 13px;
+  font-size: 15px;
   text-transform: uppercase;
   font-weight: 900;
 }
@@ -196,7 +196,7 @@ navbar {
 }
 
 .headingMobile {
-  margin-top: 6em;
+  margin-top: 7em;
   text-transform: uppercase;
   font-family: 'Gambetta', serif;
   transition: 1000ms ease-out;

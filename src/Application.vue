@@ -237,7 +237,9 @@ body {
 
 /*==========================================================================================n*/
 .positionOfGaugeMobile {
-  width: 75%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .positionOfGaugeTablet {
@@ -264,7 +266,9 @@ body {
 
 /*==========================================================================================n*/
 .sizeOfLogMobile {
-  padding: 0.8em;
+  padding-bottom: 0.5em;
+  width: 93.5%;
+  text-align: center;
 }
 
 .sizeOfLogTablet {
@@ -284,7 +288,7 @@ body {
 
 .sizeOfLogDesktop {
   width: 50%;
-  font-size: 27.5px;
+  font-size: 25px;
   padding: 0.2em;
   padding-right: 1em;
   text-align: center;
