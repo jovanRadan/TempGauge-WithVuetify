@@ -314,7 +314,8 @@ h3 {
 }
 
 .Application {
-  background: #F3EFE5;
+  background: #FFFFFF;
+  /*    REMEMBER TO CHANGE BACKGROUND COLOUR TO CHANGE    */
   color: #192734;
   transition: background 1.75s ease-in-out;
   width: 100vw;

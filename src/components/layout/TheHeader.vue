@@ -28,6 +28,7 @@
 <script>
 import Toggle from '@/components/switch/Toggle'
 
+
 export default {
   props: ['mode'],
   components: {
@@ -94,7 +95,7 @@ export default {
           return 'navTitleUltraWide'
       }
     }
-  }
+  },
 }
 </script>
 
