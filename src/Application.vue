@@ -17,6 +17,9 @@
         />
       </div>
       <div :class="logLayout">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&family=Varela+Round&display=swap" rel="stylesheet">
         <ul v-for="index in Math.min(8, messages.length)" :key="index">
           <span style="font-weight: bold;">{{ topic }}</span> = {{ messages[index-1].payload }} °C <span style="font-weight: bold;"> at {{
             formatDate(new Date()) + "  " + messages[index-1].date
@@ -301,10 +304,6 @@ body {
   text-align: center;
 }
 
-h3 {
-  color: #333;
-}
-
 #app .desc {
   font-style: italic;
   color: #aaa;
@@ -323,6 +322,15 @@ h3 {
 
 p {
   font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Varela Round', sans-serif;
+}
+
+ul {
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .dark {

@@ -2,8 +2,13 @@
   <header>
     <v-row align="center" justify="center">
       <navbar>
-        <h1 :class="TitleSize">{{ mode }} Mode</h1>
-        <h1 :class="TitleSize"> (Press T to switch)</h1>
+        <h1 :class="TitleSize"
+            link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap" rel="stylesheet">
+         {{ mode }} Mode </h1>
+
+        <h1 :class="TitleSize">
+          <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap" rel="stylesheet">
+          (Press T to switch)</h1>
         <Toggle :class="TitleSize" :mode="mode" @toggle="$emit('toggle')"/>
       </navbar>
     </v-row>
@@ -20,7 +25,10 @@
           </div>
         </div>
       </v-card>
-      <v-card-title :class="sizeOfTitle"> Server Room Temperature Log</v-card-title>
+      <v-card-title :class="sizeOfTitle" link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap" rel="stylesheet">
+      Server Room Temperature Log</v-card-title>
     </div>
   </header>
 </template>
@@ -127,39 +135,50 @@ navbar {
 }
 
 .navTitleMobile {
-  font-size: 15px;
+  font-size: 20px;
   text-transform: uppercase;
   font-weight: 900;
+  font-family: 'Roboto Condensed', sans-serif;
+  transition: 1000ms ease-out;
+
 }
 
 .navTitleTablet {
-  font-size: 25px;
-  text-transform: uppercase;
-  font-weight: 900;
-  width: 33%;
-
-}
-
-.navTitleMedium {
-  font-size: 22px;
-  text-transform: uppercase;
-  font-weight: 900;
-  width: 33%;
-}
-
-.navTitleDesktop {
   font-size: 30px;
   text-transform: uppercase;
   font-weight: 900;
   width: 33%;
+  font-family: 'Roboto Condensed', sans-serif;
+  transition: 1000ms ease-out;
 
 }
 
-.navTitleUltraWide {
+.navTitleMedium {
+  font-size: 35px;
+  text-transform: uppercase;
+  font-weight: 900;
+  width: 33%;
+  font-family: 'Roboto Condensed', sans-serif;
+  transition: 1000ms ease-out;
+
+}
+
+.navTitleDesktop {
   font-size: 40px;
   text-transform: uppercase;
   font-weight: 900;
   width: 33%;
+  font-family: 'Roboto Condensed', sans-serif;
+  transition: 1000ms ease-out;
+}
+
+.navTitleUltraWide {
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: 900;
+  width: 33%;
+  font-family: 'Roboto Condensed', sans-serif;
+  transition: 1000ms ease-out;
 }
 
 /*==========================================================================================n*/
@@ -197,21 +216,21 @@ navbar {
 }
 
 .headingMobile {
-  margin-top: 7em;
+  margin-top: 5.5em;
   text-transform: uppercase;
-  font-family: 'Gambetta', serif;
+  font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
   letter-spacing: 6px;
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 32.5px;
   text-decoration-line: underline
 }
 
 .headingMobile:hover {
-  letter-spacing: 10px;
-  font-size: 32px;
+  letter-spacing: 8px;
+  font-size: 37.5px;
   transition: 800ms ease;
 }
 
@@ -245,7 +264,7 @@ navbar {
 .headingTablet {
   margin-top: 5em;
   text-transform: uppercase;
-  font-family: 'Gambetta', serif;
+  font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
   margin-bottom: -4.5em;
   letter-spacing: 6px;
@@ -292,7 +311,7 @@ navbar {
 .headingMedium {
   margin-top: 3em;
   text-transform: uppercase;
-  font-family: 'Gambetta', serif;
+  font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
   margin-bottom: -4.5em;
   letter-spacing: 6px;
@@ -339,19 +358,19 @@ navbar {
 .headingDesktop {
   margin-top: 1.75em;
   text-transform: uppercase;
-  font-family: 'Gambetta', serif;
+  font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
-  letter-spacing: 6px;
+  letter-spacing: 8px;
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 70px;
+  font-size: 80px;
   text-decoration-line: underline
 }
 
 .headingDesktop:hover {
   letter-spacing: 10px;
-  font-size: 75px;
+  font-size: 85px;
   transition: 800ms ease;
 }
 
@@ -383,24 +402,22 @@ navbar {
 }
 
 .headingUltraWide {
-  margin-top: 2.25em;
+  margin-top: 1.5em;
   text-transform: uppercase;
-  font-family: 'Gambetta', serif;
+  font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
-  letter-spacing: 6px;
+  letter-spacing: 10px;
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 105px;
+  font-size: 115px;
   text-decoration-line: underline;
   width: 80%;
-  z-index: 1000000;
-
 }
 
 .headingUltraWide:hover {
-  letter-spacing: 10px;
-  font-size: 117.5px;
+  letter-spacing: 8px;
+  font-size: 130px;
   transition: 800ms ease;
 }
 
