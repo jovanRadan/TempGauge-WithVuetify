@@ -430,33 +430,33 @@ export default {
       }
     },
   },
-    watch: {
-      value: {
-        handler(newVal) {
-          if (this.animationCanceler) {
-            this.animationCanceler();
-          }
+  watch: {
+    value: {
+      handler(newVal) {
+        if (this.animationCanceler) {
+          this.animationCanceler();
+        }
 
-          this.animationCanceler = animateCalc(
-              this.shownValue,
-              this.checkLimits(newVal),
-              this.animationDuration,
-              val => {
-                this.shownValue = this.checkLimits(val);
-                this.printValue = this.formatFunction(this.shownValue);
-              },
-              this.easingFunction
-          );
-        },
-        immediate: true
+        this.animationCanceler = animateCalc(
+            this.shownValue,
+            this.checkLimits(newVal),
+            this.animationDuration,
+            val => {
+              this.shownValue = this.checkLimits(val);
+              this.printValue = this.formatFunction(this.shownValue);
+            },
+            this.easingFunction
+        );
       },
-      shownValue: {
-        handler(val) {
-          let color = this.getColorForValue(val).join(",");
-          this.gaugeColor = `rgb(${color})`;
-        },
-        immediate: true
-      }
+      immediate: true
+    },
+    shownValue: {
+      handler(val) {
+        let color = this.getColorForValue(val).join(",");
+        this.gaugeColor = `rgb(${color})`;
+      },
+      immediate: true
     }
+  }
 };
 </script>

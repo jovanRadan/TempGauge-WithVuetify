@@ -17,13 +17,12 @@
         />
       </div>
       <div :class="logLayout">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&family=Varela+Round&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&family=Varela+Round&display=swap"
+            rel="stylesheet">
         <ul v-for="index in Math.min(8, messages.length)" :key="index">
-          <span style="font-weight: bold;">{{ topic }}</span> = {{ messages[index-1].payload }} °C <span style="font-weight: bold;"> at {{
-            formatDate(new Date()) + "  " + messages[index-1].date
-          }} </span>
+          {{ topic }} = {{ messages[index - 1].payload }} °C at
+          {{ formatDate(new Date()) + "  " + messages[index - 1].date }}
         </ul>
       </div>
     </div>
@@ -45,7 +44,6 @@ export default {
     return {
       exampleValue: 0,
       mode: 'light',
-      //=======================================================
       host: 'serbia.gdi.net ',
       port: 80,
       path: ' /ws/mqtt/',
@@ -209,8 +207,6 @@ body {
 }
 
 /*==========================================================================================n*/
-.containerApplicationMobile {
-}
 
 .containerApplicationTablet {
   margin: auto;
@@ -254,12 +250,14 @@ body {
 .positionOfGaugeMedium {
   display: flex;
   width: 50%;
-  justify-content: center;}
+  justify-content: center;
+}
 
 .positionOfGaugeDesktop {
   display: flex;
   width: 50%;
-  justify-content: center;}
+  justify-content: center;
+}
 
 .positionOfGaugeUltraWide {
   display: flex;
@@ -269,7 +267,7 @@ body {
 
 /*==========================================================================================n*/
 .sizeOfLogMobile {
-  padding-bottom: 0.5em;
+  padding-bottom: 1.5em;
   width: 93.5%;
   text-align: center;
 }
@@ -314,7 +312,6 @@ body {
 
 .Application {
   background: #FFFFFF;
-  /*    REMEMBER TO CHANGE BACKGROUND COLOUR TO CHANGE    */
   color: #192734;
   transition: background 1.75s ease-in-out;
   width: 100vw;
@@ -322,15 +319,13 @@ body {
 
 p {
   font-size: 30px;
-  font-family: 'Roboto', sans-serif;
-  font-family: 'Roboto Condensed', sans-serif;
   font-family: 'Varela Round', sans-serif;
+  transition: 1000ms ease-out;
 }
 
 ul {
-  font-family: 'Roboto', sans-serif;
-  font-family: 'Roboto Condensed', sans-serif;
   font-family: 'Varela Round', sans-serif;
+  transition: 1000ms ease-out;
 }
 
 .dark {

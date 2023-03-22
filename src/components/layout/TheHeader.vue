@@ -3,12 +3,16 @@
     <v-row align="center" justify="center">
       <navbar>
         <h1 :class="TitleSize"
-            link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap" rel="stylesheet">
-         {{ mode }} Mode </h1>
+            link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap"
+            rel="stylesheet">
+          {{ mode }} Mode </h1>
 
         <h1 :class="TitleSize">
-          <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap" rel="stylesheet">
-          (Press T to switch)</h1>
+          <link
+              href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap"
+              rel="stylesheet">
+          (Press T to switch)
+        </h1>
         <Toggle :class="TitleSize" :mode="mode" @toggle="$emit('toggle')"/>
       </navbar>
     </v-row>
@@ -26,9 +30,12 @@
         </div>
       </v-card>
       <v-card-title :class="sizeOfTitle" link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap" rel="stylesheet">
-      Server Room Temperature Log</v-card-title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap"
+            rel="stylesheet">
+        Server Room Temperature Log
+      </v-card-title>
     </div>
   </header>
 </template>
@@ -118,6 +125,10 @@ export default {
 
 /*==========================================================================================*/
 
+.dark navbar {
+  background: #364049;
+}
+
 navbar {
   display: flex;
   justify-content: space-between;
@@ -130,17 +141,12 @@ navbar {
   position: absolute;
 }
 
-.dark navbar {
-  background: #364049;
-}
-
 .navTitleMobile {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 900;
   font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
-
 }
 
 .navTitleTablet {
@@ -150,7 +156,6 @@ navbar {
   width: 33%;
   font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
-
 }
 
 .navTitleMedium {
@@ -160,7 +165,6 @@ navbar {
   width: 33%;
   font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
-
 }
 
 .navTitleDesktop {
