@@ -3,7 +3,8 @@
     <v-row align="center" justify="center">
       <navbar>
         <h1 :class="TitleSize"
-            link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap"
+            link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap"
             rel="stylesheet">
           {{ mode }} Mode </h1>
 
@@ -64,6 +65,7 @@ export default {
         case 'xl':
           return 'responsiveUltraWide'
       }
+      return null;
     },
     sizeOfTitle() {
       switch (this.$vuetify.breakpoint.name) {
@@ -79,6 +81,7 @@ export default {
         case 'xl':
           return 'headingUltraWide'
       }
+      return null;
     },
     pulsingCircle() {
       switch (this.$vuetify.breakpoint.name) {
@@ -94,6 +97,7 @@ export default {
         case 'xl':
           return 'pulsingUltraWide'
       }
+      return null;
     },
     TitleSize() {
       switch (this.$vuetify.breakpoint.name) {
@@ -109,6 +113,7 @@ export default {
         case 'xl':
           return 'navTitleUltraWide'
       }
+      return null;
     }
   },
 }
@@ -136,7 +141,7 @@ navbar {
   height: 70px;
   background: #adacac;
   transition: background 1.75s ease-in-out;
-  width: 100%;
+  width: 105%;
   z-index: 1000000;
   position: absolute;
 }
@@ -183,6 +188,10 @@ navbar {
   width: 33%;
   font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
+  /*margin-top: 0.3em;
+
+  TO MAKE TOGGLE IN LINE BUT NOT THE OTHER TWO
+   */
 }
 
 /*==========================================================================================n*/
@@ -393,20 +402,20 @@ navbar {
 /*=========================================================================================================================*/
 
 .responsiveUltraWide {
-  top: 10%;
-  height: 850px;
-  width: 850px;
+  top: 9%;
+  height: 600px;
+  width: 600px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 450px;
-  padding-top: 155px;
+  font-size: 325px;
+  padding-top: 100px;
   z-index: 1;
 }
 
 .headingUltraWide {
-  margin-top: 1.5em;
+  margin-top: 1.25em;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
@@ -414,14 +423,14 @@ navbar {
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 115px;
+  font-size: 80px;
   text-decoration-line: underline;
   width: 80%;
 }
 
 .headingUltraWide:hover {
-  letter-spacing: 8px;
-  font-size: 130px;
+  letter-spacing: 5px;
+  font-size: 90px;
   transition: 800ms ease;
 }
 
@@ -429,8 +438,8 @@ navbar {
   top: 1%;
   border-radius: 50%;
   background-color: deepskyblue;
-  width: 850px; /* here to change size of pulsing  */
-  height: 850px; /* here to change size of pulsing  */
+  width: 625px; /* here to change size of pulsing  */
+  height: 625px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);

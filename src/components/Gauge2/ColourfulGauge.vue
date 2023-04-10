@@ -61,9 +61,7 @@
             text-anchor="middle"
             :style="labelFontStyle"
             v-html="labelText"
-        >
-          <tspan v-html="labelText"></tspan>
-        </text>
+        ></text>
         <text
             :x="minTextX"
             :y="120"
@@ -425,9 +423,9 @@ export default {
         case 'lg':
           return 800
         case 'xl':
-          return 1150
-
+          return 1000
       }
+      return null
     },
   },
   watch: {

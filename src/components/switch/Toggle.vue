@@ -23,6 +23,7 @@ export default {
 .toggle {
   position: relative;
   display: inline-block;
+  margin-top: 0.3em;
   width: 60px;
   height: 34px;
 }

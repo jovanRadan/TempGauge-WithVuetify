@@ -35,6 +35,7 @@ import TheHeader from "@/components/layout/TheHeader";
 import * as Paho from 'paho-mqtt';
 
 export default {
+  // eslint-disable-next-line vue/multi-word-component-names
   name: "Application",
   components: {
     TheHeader,
@@ -163,6 +164,7 @@ export default {
         case 'xl':
           return 'containerApplicationUltraWide'
       }
+      return null;
     },
     colourfulGauge() {
       switch (this.$vuetify.breakpoint.name) {
@@ -177,6 +179,7 @@ export default {
         case 'xl':
           return 'positionOfGaugeUltraWide'
       }
+      return null;
     },
     logLayout() {
       switch (this.$vuetify.breakpoint.name) {
@@ -191,6 +194,7 @@ export default {
         case 'xl':
           return 'sizeOfLogUltraWide'
       }
+      return null;
     }
   }
 };
@@ -213,7 +217,6 @@ body {
   justify-items: center;
   justify-content: center;
   justify-self: center;
-
 }
 
 .containerApplicationMedium {
@@ -297,7 +300,7 @@ body {
 
 .sizeOfLogUltraWide {
   width: 50%;
-  font-size: 40px;
+  font-size: 37.5px;
   padding: 0.5em;
   text-align: center;
 }
