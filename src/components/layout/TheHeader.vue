@@ -4,7 +4,7 @@
       <navbar>
         <h1 :class="TitleSize"
             link
-            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap"
+            ref="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap"
             rel="stylesheet">
           {{ mode }} Mode </h1>
 
@@ -403,19 +403,19 @@ navbar {
 
 .responsiveUltraWide {
   top: 9%;
-  height: 600px;
-  width: 600px;
+  height: 550px;
+  width: 550px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 325px;
-  padding-top: 100px;
+  font-size: 300px;
+  padding-top: 85px;
   z-index: 1;
 }
 
 .headingUltraWide {
-  margin-top: 1.25em;
+  margin-top: 1.5em;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
@@ -438,8 +438,8 @@ navbar {
   top: 1%;
   border-radius: 50%;
   background-color: deepskyblue;
-  width: 625px; /* here to change size of pulsing  */
-  height: 625px; /* here to change size of pulsing  */
+  width: 550px; /* here to change size of pulsing  */
+  height: 550px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
