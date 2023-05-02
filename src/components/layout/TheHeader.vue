@@ -18,17 +18,14 @@
       </navbar>
     </v-row>
 
-    <div class="container">
-      <v-card :class="whichScreen">
-        <div class="outerCircle">
+    <div :class="pulseContainer">
+      <div class="container">
+        <v-card :class="whichScreen">
           <v-card-title class="dot">GDi</v-card-title>
-          <div id="pulsingCircleContainer">
-            <div :class="pulsingCircle" style="animation-delay: 0.5s"></div>
-            <div :class="pulsingCircle" style="animation-delay: 1.5s"></div>
-            <div :class="pulsingCircle" style="animation-delay: 2.5s"></div>
-            <div :class="pulsingCircle" style="animation-delay: 3.5s"></div>
-          </div>
-        </div>
+          <div :class="pulsingCircle" style="animation-delay: 0.5s"></div>
+          <div :class="pulsingCircle" style="animation-delay: 1.5s"></div>
+          <div :class="pulsingCircle" style="animation-delay: 2.5s"></div>
+          <div :class="pulsingCircle" style="animation-delay: 3.5s"></div>
       </v-card>
       <v-card-title :class="sizeOfTitle" link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +34,7 @@
             rel="stylesheet">
         Server Room Temperature Log
       </v-card-title>
+    </div>
     </div>
   </header>
 </template>
@@ -80,6 +78,22 @@ export default {
           return 'headingDesktop'
         case 'xl':
           return 'headingUltraWide'
+      }
+      return null;
+    },
+    pulseContainer() {
+      switch (this.$vuetify.breakpoint.name) {
+
+        case 'xs':
+          return 'pulseContainerMobile'
+        case 'sm':
+          return 'pulseContainerTablet'
+        case 'md':
+          return 'pulseContainerMedium'
+        case 'lg':
+          return 'pulseContainerDesktop'
+        case 'xl':
+          return 'pulseContainerUltraWide'
       }
       return null;
     },
@@ -141,7 +155,7 @@ navbar {
   height: 70px;
   background: #adacac;
   transition: background 1.75s ease-in-out;
-  width: 105%;
+  width: 100%;
   z-index: 1000000;
   position: absolute;
 }
@@ -214,6 +228,12 @@ navbar {
 
 /*=========================================================================================================================*/
 
+.pulseContainerMobile {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
 .responsiveMobile {
   top: 20%;
   height: 300px;
@@ -226,10 +246,11 @@ navbar {
   padding-top: 40px;
   padding-bottom: -40px;
   z-index: 1;
+  /*padding-left: 0.1em;*/
 }
 
 .headingMobile {
-  margin-top: 5.5em;
+  margin-top: 6.75em;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
@@ -238,7 +259,8 @@ navbar {
   text-align: center;
   justify-content: center;
   font-size: 32.5px;
-  text-decoration-line: underline
+  text-decoration-line: underline;
+  /*padding-left: 1em*/
 }
 
 .headingMobile:hover {
@@ -257,6 +279,7 @@ navbar {
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
   z-index: -10;
+
 }
 
 /*=========================================================================================================================*/
@@ -357,14 +380,14 @@ navbar {
 
 .responsiveDesktop {
   top: 10%;
-  height: 550px;
-  width: 550px;
+  height: 500px;
+  width: 500px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 300px;
-  padding-top: 85px;
+  font-size: 275px;
+  padding-top: 75px;
   z-index: 1;
 }
 
@@ -377,7 +400,7 @@ navbar {
   color: #427f93;
   text-align: center;
   justify-content: center;
-  font-size: 80px;
+  font-size: 70px;
   text-decoration-line: underline
 }
 
@@ -391,8 +414,8 @@ navbar {
   top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
-  width: 550px; /* here to change size of pulsing  */
-  height: 550px; /* here to change size of pulsing  */
+  width: 500px; /* here to change size of pulsing  */
+  height: 500px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);

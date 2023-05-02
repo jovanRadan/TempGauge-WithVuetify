@@ -59,7 +59,7 @@ export default {
 }
 
 input:checked + .toggler {
-  background: #e2e2e2;
+  background: #bdbdbd;
 }
 
 input:focus + toggler {

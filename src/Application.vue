@@ -1,9 +1,9 @@
 <template>
   <div class="Application" :class="mode">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="device-width=width, initial-scale=1"/>
     <the-header :mode="mode" @toggle="toggle"></the-header>
 
-    <p align="center" justify="center"> Status: {{ status }}</p>
+    <p justify="center"> Status: {{ status }}</p>
 
     <div :class="containerApplication">
       <div :class="colourfulGauge">
@@ -213,6 +213,8 @@ body {
 /*==========================================================================================n*/
 
 .containerApplicationTablet {
+  width: 200px;
+  height: 300px;
   margin: auto;
   justify-items: center;
   justify-content: center;
@@ -324,6 +326,7 @@ p {
   font-size: 30px;
   font-family: 'Varela Round', sans-serif;
   transition: 1000ms ease-out;
+  text-align: center;
 }
 
 ul {

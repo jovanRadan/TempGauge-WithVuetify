@@ -3,6 +3,6 @@ module.exports = {
         'vuetify',
     ],
 
-    baseUrl: '/',
+    publicPath: '/',
     productionSourceMap: true,
 }
