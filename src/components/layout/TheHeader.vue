@@ -26,15 +26,15 @@
           <div :class="pulsingCircle" style="animation-delay: 1.5s"></div>
           <div :class="pulsingCircle" style="animation-delay: 2.5s"></div>
           <div :class="pulsingCircle" style="animation-delay: 3.5s"></div>
-      </v-card>
-      <v-card-title :class="sizeOfTitle" link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap"
-            rel="stylesheet">
-        Server Room Temperature Log
-      </v-card-title>
-    </div>
+        </v-card>
+        <v-card-title :class="sizeOfTitle" link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link
+              href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap"
+              rel="stylesheet">
+         Server Room Temperature Log
+        </v-card-title>
+      </div>
     </div>
   </header>
 </template>
@@ -90,10 +90,6 @@ export default {
           return 'pulseContainerTablet'
         case 'md':
           return 'pulseContainerMedium'
-        case 'lg':
-          return 'pulseContainerDesktop'
-        case 'xl':
-          return 'pulseContainerUltraWide'
       }
       return null;
     },
@@ -228,12 +224,6 @@ navbar {
 
 /*=========================================================================================================================*/
 
-.pulseContainerMobile {
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
 .responsiveMobile {
   top: 20%;
   height: 300px;
@@ -269,6 +259,12 @@ navbar {
   transition: 800ms ease;
 }
 
+.pulseContainerMobile {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
 .pulsingMobile {
   top: 0.1%;
   border-radius: 50%;
@@ -298,7 +294,7 @@ navbar {
 }
 
 .headingTablet {
-  margin-top: 5em;
+  margin-top: 4.5em;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
@@ -317,6 +313,12 @@ navbar {
   transition: 800ms ease;
 }
 
+.pulseContainerTablet {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
 .pulsingTablet {
   top: 0.1%;
   border-radius: 50%;
@@ -332,20 +334,20 @@ navbar {
 /*=========================================================================================================================*/
 
 .responsiveMedium {
-  top: 15%;
-  height: 525px;
-  width: 525px;
+  top: 12.5%;
+  height: 500px;
+  width: 500px;
   background-color: #00adee;
   border-radius: 50%;
   color: white;
   font-family: "trebuchet MS", sans-serif;
-  font-size: 275px;
-  padding-top: 80px;
+  font-size: 250px;
+  padding-top: 90px;
   z-index: 1;
 }
 
 .headingMedium {
-  margin-top: 3em;
+  margin-top: 2em;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
@@ -364,12 +366,18 @@ navbar {
   transition: 800ms ease;
 }
 
+.pulseContainerMedium {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
 .pulsingMedium {
   top: 0.1%;
   border-radius: 50%;
   background-color: deepskyblue;
-  width: 525px; /* here to change size of pulsing  */
-  height: 525px; /* here to change size of pulsing  */
+  width: 500px; /* here to change size of pulsing  */
+  height: 500px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
   animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
@@ -455,6 +463,7 @@ navbar {
   letter-spacing: 5px;
   font-size: 90px;
   transition: 800ms ease;
+  font-weight: 900;
 }
 
 .pulsingUltraWide {
@@ -465,12 +474,14 @@ navbar {
   height: 550px; /* here to change size of pulsing  */
   position: absolute;
   opacity: 0;
-  animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+  animation: scaleIn 4.25s infinite cubic-bezier(.36, .11, .89, .32);
   z-index: -100;
 }
 
 .fullWidth {
   width: 100%
 }
+
+/*==========================================================================*/
 
 </style>

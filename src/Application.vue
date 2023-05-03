@@ -47,7 +47,7 @@ export default {
       mode: 'light',
       host: 'serbia.gdi.net ',
       port: 80,
-      path: ' /ws/mqtt/',
+      path: ' /wss/mqtt/',
       useTLS: false,
       cleansession: true,
       username: null,
@@ -212,15 +212,6 @@ body {
 
 /*==========================================================================================n*/
 
-.containerApplicationTablet {
-  width: 200px;
-  height: 300px;
-  margin: auto;
-  justify-items: center;
-  justify-content: center;
-  justify-self: center;
-}
-
 .containerApplicationMedium {
   display: flex;
   flex-direction: row;
@@ -273,7 +264,6 @@ body {
 /*==========================================================================================n*/
 .sizeOfLogMobile {
   padding-bottom: 1.5em;
-  width: 93.5%;
   text-align: center;
 }
 
@@ -281,6 +271,7 @@ body {
   padding: 1em;
   font-size: 2em;
   text-align: center;
+  width: 100%;
 }
 
 .sizeOfLogMedium {
@@ -332,6 +323,7 @@ p {
 ul {
   font-family: 'Varela Round', sans-serif;
   transition: 1000ms ease-out;
+  padding: 0;
 }
 
 .dark {

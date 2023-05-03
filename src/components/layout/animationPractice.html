@@ -1,79 +1,79 @@
-<!DOCTYPE html>
-<html>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Pulsing Circle</title>
-    <style>
+<!--<head>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+<!--    <title>Pulsing Circle</title>-->
+<!--    <style>-->
 
-        #container {
-            margin: auto;
-            justify-items: center;
-            place-content: center;
-            width: 200px;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
+<!--        #container {-->
+<!--            margin: auto;-->
+<!--            justify-items: center;-->
+<!--            place-content: center;-->
+<!--            width: 200px;-->
+<!--            height: 300px;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            overflow: hidden;-->
+<!--            position: relative;-->
+<!--        }-->
 
-        .circle {
-            border-radius: 50%;
-            background-color: deepskyblue;
-            width: 150px; /* here to change size of pulsing  */
-            height: 150px; /* here to change size of pulsing  */
-            position: absolute;
-            opacity: 0;
-            animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+<!--        .circle {-->
+<!--            border-radius: 50%;-->
+<!--            background-color: deepskyblue;-->
+<!--            width: 150px; /* here to change size of pulsing  */-->
+<!--            height: 150px; /* here to change size of pulsing  */-->
+<!--            position: absolute;-->
+<!--            opacity: 0;-->
+<!--            animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);-->
 
-        }
+<!--        }-->
 
-        .item {
-            z-index: 100;
-            padding: 5px;
-        }
+<!--        .item {-->
+<!--            z-index: 100;-->
+<!--            padding: 5px;-->
+<!--        }-->
 
-        @keyframes scaleIn {
-            from {
-                transform: scale(.5, .5);
-                opacity: .5;
-            }
-            to {
-                transform: scale(2.5, 2.5);
-                opacity: 0;
-            }
-        }
+<!--        @keyframes scaleIn {-->
+<!--            from {-->
+<!--                transform: scale(.5, .5);-->
+<!--                opacity: .5;-->
+<!--            }-->
+<!--            to {-->
+<!--                transform: scale(2.5, 2.5);-->
+<!--                opacity: 0;-->
+<!--            }-->
+<!--        }-->
 
-        .dot {
-            /*top: 5%;*/
-            /*height: 600px;*/
-            /*width: 600px;*/
-            background-color: #00adee;
-            border-radius: 50%;
-            color: pink;
-            font-family: "trebuchet MS", sans-serif;
-            /*font-size: 100px;*/
-            padding: 50px;
-        }
+<!--        .dot {-->
+<!--            /*top: 5%;*/-->
+<!--            /*height: 600px;*/-->
+<!--            /*width: 600px;*/-->
+<!--            background-color: #00adee;-->
+<!--            border-radius: 50%;-->
+<!--            color: pink;-->
+<!--            font-family: "trebuchet MS", sans-serif;-->
+<!--            /*font-size: 100px;*/-->
+<!--            padding: 50px;-->
+<!--        }-->
 
 
-    </style>
-</head>
+<!--    </style>-->
+<!--</head>-->
 
-<body>
-<div id="outerContainer">
-    <div id="container">
-        <div class="item">
-            <v-card-title class="dot">GDi</v-card-title>
-        </div>
-        <div class="circle" style="animation-delay: 0s"></div>
-        <div class="circle" style="animation-delay: 1s"></div>
-        <div class="circle" style="animation-delay: 2s"></div>
-        <div class="circle" style="animation-delay: 3s"></div>
-    </div>
-</div>
-</body>
+<!--<body>-->
+<!--<div id="outerContainer">-->
+<!--    <div id="container">-->
+<!--        <div class="item">-->
+<!--            <v-card-title class="dot">GDi</v-card-title>-->
+<!--        </div>-->
+<!--        <div class="circle" style="animation-delay: 0s"></div>-->
+<!--        <div class="circle" style="animation-delay: 1s"></div>-->
+<!--        <div class="circle" style="animation-delay: 2s"></div>-->
+<!--        <div class="circle" style="animation-delay: 3s"></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
 
-</html>
+<!--</html>-->
