@@ -198,10 +198,7 @@ navbar {
   width: 33%;
   font-family: 'Roboto Condensed', sans-serif;
   transition: 1000ms ease-out;
-  /*margin-top: 0.3em;
-
-  TO MAKE TOGGLE IN LINE BUT NOT THE OTHER TWO
-   */
+  /*!*margin-top: 0.3em;*/
 }
 
 /*==========================================================================================n*/

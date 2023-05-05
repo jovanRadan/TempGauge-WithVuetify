@@ -48,7 +48,7 @@ export default {
       host: 'serbia.gdi.net ',
       port: 80,
       path: ' /wss/mqtt/',
-      useTLS: false,
+      useTLS: true,
       cleansession: true,
       username: null,
       password: null,
@@ -94,7 +94,7 @@ export default {
     MQTTconnect() {
       this.mqtt = new Paho.Client(
           'serbia.gdi.net',   // host
-          80,                 // port
+          443,                 // port
           '/ws/mqtt/',        // path
           'web_' + parseInt(Math.random() * 100, 10)
       );
